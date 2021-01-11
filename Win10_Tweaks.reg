@@ -1,19 +1,21 @@
 Windows Registry Editor Version 5.00
 
 
-;
-;
-;
-;
-;
-;
-;
-;
-;
+;   This is the List of Registry Tweaks by Jaff2836.
+;   You can manually add/remove comment to use or not use the tweaks.
+
+;   This is currently work in progress.
+
+;   Thanks to TenForums, MajorGeeks, and Ray Woodcock.
+
+
+
 
 
 ;   Created with Winaero Tweaker 0.18.0.0
 ;   https://winaero.com
+
+
 
 ;   #######################################################
 ;       ***************************************************
@@ -24,6 +26,7 @@ Windows Registry Editor Version 5.00
 ;           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;       ***************************************************
 ;   #######################################################
+
 
 
 ;   #######################################################
