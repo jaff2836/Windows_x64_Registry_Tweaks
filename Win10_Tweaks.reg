@@ -1,0 +1,1986 @@
+Windows Registry Editor Version 5.00
+
+
+;
+;
+;
+;
+;
+;
+;
+;
+;
+
+
+;   Created with Winaero Tweaker 0.18.0.0
+;   https://winaero.com
+
+;   #######################################################
+;       ***************************************************
+;           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+;               -------------------------------------------
+;               DESCRIPTIONS
+;               -------------------------------------------
+;           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+;       ***************************************************
+;   #######################################################
+
+
+;   #######################################################
+;   # FILE EXPLORER
+;   #######################################################
+
+;       * Remove Folders From This PC
+
+;       3D Objects
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}]
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}]
+
+;       Desktop
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}]
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}]
+
+;       Documents
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{A8CDFF1C-4878-43be-B5FD-F8091C1C60D0}]
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{d3162b92-9365-467a-956b-92703aca08af}]
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{A8CDFF1C-4878-43be-B5FD-F8091C1C60D0}]
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{d3162b92-9365-467a-956b-92703aca08af}]
+
+;       Downloads
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{374DE290-123F-4565-9164-39C4925E467B}]
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{088e3905-0323-4b02-9826-5d99428e115f}]
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{374DE290-123F-4565-9164-39C4925E467B}]
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{088e3905-0323-4b02-9826-5d99428e115f}]
+
+;       Music
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{1CF1260C-4DD0-4ebb-811F-33C572699FDE}]
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3dfdf296-dbec-4fb4-81d1-6a3438bcf4de}]
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{1CF1260C-4DD0-4ebb-811F-33C572699FDE}]
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3dfdf296-dbec-4fb4-81d1-6a3438bcf4de}]
+
+;       Pictures
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3ADD1653-EB32-4cb0-BBD7-DFA0ABB5ACCA}]
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{24ad3ad4-a569-4530-98e1-ab02f9417aa8}]
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3ADD1653-EB32-4cb0-BBD7-DFA0ABB5ACCA}]
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{24ad3ad4-a569-4530-98e1-ab02f9417aa8}]
+
+;       Videos
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{A0953C92-50DC-43bf-BE83-3742FED03C9C}]
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a}]
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{A0953C92-50DC-43bf-BE83-3742FED03C9C}]
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a}]
+
+
+;       ***************************************************
+;       * Remove Folders on Navigation Pane
+;       ***************************************************
+
+;           > Remove OneDrive icon
+;           Uninstalling OneDrive may help for some purposes, but will not necessarily remove icon from File Manager navigation pane.
+;           http://www.tenforums.com/tutorials/4818-onedrive-add-remove-navigation-pane-windows-10-a.html
+
+            [HKEY_CURRENT_USER\Software\Classes\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
+            "System.IsPinnedToNameSpaceTree"=dword:00000000
+            [-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
+
+
+
+;           > Remove user folder
+;           This will not work if Show All Folders is checked.
+;           https://www.tenforums.com/tutorials/88845-add-remove-user-folder-navigation-pane-windows-10-a.html
+
+            [HKEY_CURRENT_USER\Software\Classes\CLSID\{59031a47-3f72-44a7-89c5-5595fe6b30ee}]
+            "System.IsPinnedToNameSpaceTree"=dword:00000000
+
+
+
+;           > Remove duplicate drive entries
+;           https://www.tenforums.com/tutorials/4675-add-remove-duplicate-drives-navigation-pane-windows-10-a.html
+
+            [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders\{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}]
+            [-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders\{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}]
+
+
+
+;           > Remove Quick Access
+;           Alternately, File Explorer > menu > View > Options > Change folder and search options:
+;               (1) Change Open File Explorer to This PC. (2) Uncheck Privacy items referring to Quick Access.
+;           https://www.tenforums.com/tutorials/4844-remove-quick-access-navigation-pane-windows-10-a.html
+
+            [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+            "HubMode"=dword:00000001
+
+;       ***************************************************
+
+
+
+;       * Remove "Shortcut" from title of new shortcuts
+;       Undo with "link"=-
+
+        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+        "link"=hex:00,00,00,00
+
+
+
+;       * Check by default the "Do this for all current items" dialog when copying/moving multiple files
+;       Undo with "ConfirmationCheckBoxDoForAll"=dword:00000000
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager]
+        "ConfirmationCheckBoxDoForAll"=dword:00000001
+
+
+
+;       * Automatically expand to current folder
+;       Undo with "NavPaneExpandToCurrentFolder"=dword:00000000
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "NavPaneExpandToCurrentFolder"=dword:00000001
+
+
+
+;       * Allow selecting and opening more than 15 items
+;       * Works for opening multiple PDFs, apparently also for right-click Print command
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
+        "MultipleInvokePromptMinimum"=dword:00000100
+
+
+
+;       * Enable Thumbnail Previews in File Explorer
+;       https://www.majorgeeks.com/content/page/how_to_disable_or_enable_thumbnail_previews_in_file_explorer.html
+
+        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+        "DisableThumbnails"=-
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+        "DisableThumbnails"=-
+
+
+
+;       * Disable 'Thumbsdb' on network drives
+
+        [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
+        "DisableThumbsDBOnNetworkFolders"=dword:00000001
+
+
+
+;       * Open File Explorer in This PC
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "LaunchTo"=dword:00000001
+
+;   #######################################################
+
+
+
+
+
+;   #######################################################
+;   # CONTEXT MENU
+;   #######################################################
+
+;       * Remove "Pin to Quick Access"
+;       http://www.tenforums.com/tutorials/2933-pin-quick-access-context-menu-remove-windows-10-a.html
+
+        [-HKEY_CLASSES_ROOT\Folder\shell\pintohome]
+
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\pintohome]
+
+
+
+;       * Remove "Restore Previous Versions"
+;       https://www.tenforums.com/tutorials/79513-remove-previous-versions-context-menu-properties-windows-10-a.html
+
+;       Removed from Properties tab
+        [-HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\PropertySheetHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}]
+
+        [-HKEY_CLASSES_ROOT\CLSID\{450D8FBA-AD25-11D0-98A8-0800361B1103}\shellex\PropertySheetHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}]
+
+        [-HKEY_CLASSES_ROOT\Directory\shellex\PropertySheetHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}]
+
+        [-HKEY_CLASSES_ROOT\Drive\shellex\PropertySheetHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}]
+
+;       Remove from context menu
+        [-HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}]
+
+        [-HKEY_CLASSES_ROOT\CLSID\{450D8FBA-AD25-11D0-98A8-0800361B1103}\shellex\ContextMenuHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}]
+
+        [-HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}]
+
+        [-HKEY_CLASSES_ROOT\Drive\shellex\ContextMenuHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}]
+
+;       To clear any policies
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
+        "NoPreviousVersionsPage"=-
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+        "NoPreviousVersionsPage"=-
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PreviousVersions]
+        "DisableLocalPage"=-
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
+        "NoPreviousVersionsPage"=-
+
+        [HKEY_CURRENT_USER\Software\Policies\Microsoft\PreviousVersions]
+        "DisableLocalPage"=-
+
+
+
+;       * Remove "Include in Library"
+;       http://www.tenforums.com/tutorials/37130-include-library-add-remove-context-menu-windows-10-a.html
+
+        [-HKEY_CLASSES_ROOT\Folder\ShellEx\ContextMenuHandlers\Library Location]
+
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\ShellEx\ContextMenuHandlers\Library Location]
+
+
+
+;       * Remove "Pin to Start"
+;       http://www.tenforums.com/tutorials/37258-pin-start-add-remove-context-menu-windows-10-a.html
+
+        [-HKEY_CLASSES_ROOT\Folder\shellex\ContextMenuHandlers\PintoStartScreen]
+
+        [-HKEY_CLASSES_ROOT\exefile\shellex\ContextMenuHandlers\PintoStartScreen]
+
+        [-HKEY_CLASSES_ROOT\Microsoft.Website\ShellEx\ContextMenuHandlers\PintoStartScreen]
+
+        [-HKEY_CLASSES_ROOT\mscfile\shellex\ContextMenuHandlers\PintoStartScreen]
+
+
+
+;       * Remove "Set as Desktop Background"
+;       http://www.tenforums.com/tutorials/26720-set-desktop-background-add-remove-context-menu-windows-10-a.html
+
+        [-HKEY_CLASSES_ROOT\SystemFileAssociations\.bmp\Shell\setdesktopwallpaper]
+
+        [-HKEY_CLASSES_ROOT\SystemFileAssociations\.dib\Shell\setdesktopwallpaper]
+
+        [-HKEY_CLASSES_ROOT\SystemFileAssociations\.gif\Shell\setdesktopwallpaper]
+
+        [-HKEY_CLASSES_ROOT\SystemFileAssociations\.jfif\Shell\setdesktopwallpaper]
+
+        [-HKEY_CLASSES_ROOT\SystemFileAssociations\.jpe\Shell\setdesktopwallpaper]
+
+        [-HKEY_CLASSES_ROOT\SystemFileAssociations\.jpeg\Shell\setdesktopwallpaper]
+
+        [-HKEY_CLASSES_ROOT\SystemFileAssociations\.jpg\Shell\setdesktopwallpaper]
+
+        [-HKEY_CLASSES_ROOT\SystemFileAssociations\.png\Shell\setdesktopwallpaper]
+
+        [-HKEY_CLASSES_ROOT\SystemFileAssociations\.tif\Shell\setdesktopwallpaper]
+
+        [-HKEY_CLASSES_ROOT\SystemFileAssociations\.tiff\Shell\setdesktopwallpaper]
+
+        [-HKEY_CLASSES_ROOT\SystemFileAssociations\.wdp\Shell\setdesktopwallpaper]
+
+
+
+;       * Remove "Rotate Right" and "Rotate Left"
+;       https://www.tenforums.com/tutorials/122613-add-remove-rotate-left-rotate-right-context-menu-windows-10-a.html
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.avci\ShellEx\ContextMenuHandlers\ShellImagePreview]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.avif\ShellEx\ContextMenuHandlers\ShellImagePreview]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.bmp\ShellEx\ContextMenuHandlers\ShellImagePreview]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.dds\ShellEx\ContextMenuHandlers\ShellImagePreview]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.dib\ShellEx\ContextMenuHandlers\ShellImagePreview]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.gif\ShellEx\ContextMenuHandlers\ShellImagePreview]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.heic\ShellEx\ContextMenuHandlers\ShellImagePreview]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.heif\ShellEx\ContextMenuHandlers\ShellImagePreview]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.ico\ShellEx\ContextMenuHandlers\ShellImagePreview]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.jfif\ShellEx\ContextMenuHandlers\ShellImagePreview]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.jpe\ShellEx\ContextMenuHandlers\ShellImagePreview]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.jpeg\ShellEx\ContextMenuHandlers\ShellImagePreview]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.jpg\ShellEx\ContextMenuHandlers\ShellImagePreview]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.jxr\ShellEx\ContextMenuHandlers\ShellImagePreview]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.png\ShellEx\ContextMenuHandlers\ShellImagePreview]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.rle\ShellEx\ContextMenuHandlers\ShellImagePreview]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.tif\ShellEx\ContextMenuHandlers\ShellImagePreview]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.tiff\ShellEx\ContextMenuHandlers\ShellImagePreview]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.wdp\ShellEx\ContextMenuHandlers\ShellImagePreview]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.webp\ShellEx\ContextMenuHandlers\ShellImagePreview]
+
+
+
+;       * Remove "Move to OneDrive"
+;       https://www.tenforums.com/tutorials/127208-add-remove-move-onedrive-context-menu-windows-10-a.html
+
+;       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked]
+;       "{CB3D0F55-BC2C-4C1A-85ED-23ED75B5106B}"=""
+
+
+
+;       * Remove "Add to Windows Media Player list"
+;       https://www.tenforums.com/tutorials/83163-remove-add-windows-media-player-list-context-menu-windows-10-a.html
+
+        [-HKEY_CLASSES_ROOT\MediaCenter.WTVFile\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\Stack.Audio\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\Stack.Image\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\SystemFileAssociations\audio\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\SystemFileAssociations\Directory.Audio\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\SystemFileAssociations\Directory.Image\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP.DVR-MSFile\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP.WTVFile\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.3G2\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.3GP\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.ADTS\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.AIFF\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.ASF\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.ASX\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.AU\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.AVI\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.FLAC\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.M2TS\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.m3u\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.M4A\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.MIDI\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.MK3D\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.MKA\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.MKV\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.MOV\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.MP3\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.MP4\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.MPEG\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.TTS\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.WAV\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.WAX\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.WMA\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.WMV\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.WPL\shell\Enqueue]
+
+        [-HKEY_CLASSES_ROOT\WMP11.AssocFile.WVX\shell\Enqueue]
+
+
+
+;       * Remove "Play with Windows Media Player"
+;       https://www.tenforums.com/tutorials/83169-remove-play-windows-media-player-context-menu-windows-10-a.html
+
+        [-HKEY_CLASSES_ROOT\Stack.Audio\shell\Play]
+
+        [-HKEY_CLASSES_ROOT\Stack.Image\shell\Play]
+
+        [-HKEY_CLASSES_ROOT\SystemFileAssociations\audio\shell\Play]
+
+        [-HKEY_CLASSES_ROOT\SystemFileAssociations\Directory.Audio\shell\Play]
+
+        [-HKEY_CLASSES_ROOT\SystemFileAssociations\Directory.Image\shell\Play]
+
+
+
+;       * Remove Share submenu
+;       https://www.tenforums.com/tutorials/73630-add-share-context-menu-windows-10-a.html
+
+;       [-HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\ModernSharing]
+
+
+
+;       * Remove "Look for an app in the Microsoft Store" in "Open with"
+;       Doesn't remove "Search the Microsoft Store"
+;       https://www.tenforums.com/tutorials/91453-remove-look-app-store-open-windows-10-a.html
+
+;       [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
+;       "NoUseStoreOpenWith"=-
+
+;       [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+;       "NoUseStoreOpenWith"=dword:00000001
+
+
+
+;       * Remove Drives in "Send to" Context Menu for All Users
+;       http://www.tenforums.com/tutorials/69524-send-context-menu-add-remove-drives-windows-10-a.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+        "NoDrivesInSendToMenu"=dword:00000001
+
+
+
+;       * Add Shift + Right Click "Copy File List to Clipboard"
+        [HKEY_CLASSES_ROOT\Directory\shell\copylist]
+        @="Copy File List to Clipboard"
+        "Extended"=""
+
+        [HKEY_CLASSES_ROOT\Directory\shell\copylist\command]
+        @="cmd /c dir \"%1\" /a:-d /o:n | clip"
+;       Alternative: copy only simple names, no details
+;       [HKEY_CLASSES_ROOT\Directory\shell\copylist]
+;       @="Copy File List to Clipboard"
+;       [HKEY_CLASSES_ROOT\Directory\shell\copylist\command]
+;       @="cmd /c dir \"%1\" /b /a:-d /o:n | clip"
+;       Undo with:
+;       [-HKEY_CLASSES_ROOT\Directory\shell\copylist]
+
+
+
+;       * Add "New Windows Batch File"
+;       https://www.majorgeeks.com/content/page/how_to_add_new_windows_batch_file_to_the_windows_10_context_menu.html
+
+        [HKEY_CLASSES_ROOT\.bat\ShellNew]
+        "NullFile"=""
+
+
+
+;       * Add "Open With Notepad"
+;       https://www.sevenforums.com/tutorials/90686-open-notepad-add-remove-context-menu-files.html
+
+        [HKEY_CLASSES_ROOT\*\shell\Open with Notepad]
+        "Icon"="notepad.exe,-2"
+
+        [HKEY_CLASSES_ROOT\*\shell\Open with Notepad\command]
+        @="notepad.exe %1"
+
+
+
+;       * Add Shift + Right Click "Open command window here as administrator"
+;       https://www.majorgeeks.com/content/page/how_to_add_open_command_window_here_context_menu.html
+
+        [HKEY_CLASSES_ROOT\Directory\shell\OpenCmdHereAsAdmin]
+        @="Open command window here as administrator"
+        "Extended"=""
+        "Icon"="imageres.dll,-5324"
+
+        [HKEY_CLASSES_ROOT\Directory\shell\OpenCmdHereAsAdmin\command]
+        @="cmd /c echo|set/p=\"%L\"|powershell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
+
+        [HKEY_CLASSES_ROOT\Directory\Background\shell\OpenCmdHereAsAdmin]
+        @="Open command window here as administrator"
+        "Extended"=""
+        "Icon"="imageres.dll,-5324"
+
+        [HKEY_CLASSES_ROOT\Directory\Background\shell\OpenCmdHereAsAdmin\command]
+        @="cmd /c echo|set/p=\"%V\"|powershell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
+
+        [HKEY_CLASSES_ROOT\Drive\shell\OpenCmdHereAsAdmin]
+        @="Open command window here as administrator"
+        "Extended"=""
+        "Icon"="imageres.dll,-5324"
+
+        [HKEY_CLASSES_ROOT\Drive\shell\OpenCmdHereAsAdmin\command]
+        @="cmd /c echo|set/p=\"%L\"|powershell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
+
+        [HKEY_CLASSES_ROOT\LibraryFolder\background\shell\OpenCmdHereAsAdmin]
+        @="Open command window here as administrator"
+        "Extended"=""
+        "Icon"="imageres.dll,-5324"
+
+        [HKEY_CLASSES_ROOT\LibraryFolder\background\shell\OpenCmdHereAsAdmin\command]
+        @="cmd /c echo|set/p=\"%V\"|powershell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
+
+;       To allow mapped drives to be available in command prompt
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+        "EnableLinkedConnections"=dword:00000001
+
+
+
+;       * Add "Copy Path"
+;       https://www.tenforums.com/tutorials/73649-copy-path-add-context-menu-windows-10-a.html
+
+        [HKEY_CLASSES_ROOT\AllFilesystemObjects\shell\windows.copyaspath]
+        "CanonicalName"="{707C7BC6-685A-4A4D-A275-3966A5A3EFAA}"
+        "CommandStateHandler"="{3B1599F9-E00A-4BBF-AD3E-B3F99FA87779}"
+        "CommandStateSync"=""
+        "Description"="@shell32.dll,-30336"
+        "Icon"="imageres.dll,-5302"
+        "InvokeCommandOnSelection"=dword:00000001
+        "MUIVerb"="@shell32.dll,-30329"
+        "VerbHandler"="{f3d06e7c-1e45-4a26-847e-f9fcdee59be0}"
+        "VerbName"="copyaspath"
+
+        [HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\CopyAsPathMenu]
+        @="{f3d06e7c-1e45-4a26-847e-f9fcdee59be0}"
+
+
+
+;       * Remove "Give access to"
+
+;       [-HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\Sharing]
+
+;       [-HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\ModernSharing]
+
+;       [-HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\Sharing]
+
+;       [-HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\Sharing]
+
+;       [-HKEY_CLASSES_ROOT\Directory\shellex\CopyHookHandlers\Sharing]
+
+;       [-HKEY_CLASSES_ROOT\Directory\shellex\PropertySheetHandlers\Sharing]
+
+;       [-HKEY_CLASSES_ROOT\Drive\shellex\ContextMenuHandlers\Sharing]
+
+;       [-HKEY_CLASSES_ROOT\Drive\shellex\PropertySheetHandlers\Sharing]
+
+;       [-HKEY_CLASSES_ROOT\LibraryFolder\background\shellex\ContextMenuHandlers\Sharing]
+
+;       [-HKEY_CLASSES_ROOT\UserLibraryFolder\shellex\ContextMenuHandlers\Sharing]
+
+
+
+;       * Remove "Edit with 3D Paint"
+;       https://www.tenforums.com/tutorials/77688-add-remove-edit-paint-3d-context-menu-windows-10-a.html
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.3mf\Shell\3D Edit]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.bmp\Shell\3D Edit]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.fbx\Shell\3D Edit]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.gif\Shell\3D Edit]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.jfif\Shell\3D Edit]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.jpe\Shell\3D Edit]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.jpeg\Shell\3D Edit]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.jpg\Shell\3D Edit]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.png\Shell\3D Edit]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.tif\Shell\3D Edit]
+
+;       [-HKEY_CLASSES_ROOT\SystemFileAssociations\.tiff\Shell\3D Edit]
+
+
+
+;       * Add "Control Panel"
+;       https://www.tenforums.com/tutorials/31976-add-control-panel-context-menu-windows-10-a.html
+
+        [HKEY_CLASSES_ROOT\DesktopBackground\Shell\ControlPanel]
+        "MUIVerb"="Control Panel"
+        "SubCommands"=""
+        "Icon"="imageres.dll,-27"
+        "Position"="Bottom"
+
+        [HKEY_CLASSES_ROOT\DesktopBackground\Shell\ControlPanel\shell\001flyout]
+        @="Control Panel (Category)"
+        "Icon"="imageres.dll,-27"
+
+        [HKEY_CLASSES_ROOT\DesktopBackground\Shell\ControlPanel\shell\001flyout\command]
+        @="explorer.exe shell:::{26EE0668-A00A-44D7-9371-BEB064C98683}"
+
+        [HKEY_CLASSES_ROOT\DesktopBackground\Shell\ControlPanel\shell\002flyout]
+        @="All Control Panel Items (Icons)"
+        "Icon"="imageres.dll,-27"
+
+        [HKEY_CLASSES_ROOT\DesktopBackground\Shell\ControlPanel\shell\002flyout\command]
+        @="explorer.exe shell:::{21EC2020-3AEA-1069-A2DD-08002B30309D}"
+
+        [HKEY_CLASSES_ROOT\DesktopBackground\Shell\ControlPanel\shell\003flyout]
+        @="All Tasks (God mode)"
+        "Icon"="imageres.dll,-27"
+
+        [HKEY_CLASSES_ROOT\DesktopBackground\Shell\ControlPanel\shell\003flyout\command]
+        @="explorer.exe shell:::{ED7BA470-8E54-465E-825C-99712043E01C}"
+
+
+
+;       * Add "Open Location"
+;       https://www.tenforums.com/tutorials/31416-open-location-context-menu-add-remove-windows-10-a.html
+
+        [HKEY_CLASSES_ROOT\.symlink\shellex\ContextMenuHandlers\OpenContainingFolderMenu]
+        @="{37ea3a21-7493-4208-a011-7f9ea79ce9f5}"
+
+        [HKEY_CLASSES_ROOT\LibraryLocation\ShellEx\ContextMenuHandlers\OpenContainingFolderMenu]
+        @="{37ea3a21-7493-4208-a011-7f9ea79ce9f5}"
+
+        [HKEY_CLASSES_ROOT\lnkfile\shellex\ContextMenuHandlers\OpenContainingFolderMenu]
+        @="{37ea3a21-7493-4208-a011-7f9ea79ce9f5}"
+
+        [HKEY_CLASSES_ROOT\RecentDocument\ShellEx\ContextMenuHandlers\OpenContainingFolderMenu]
+        @="{37ea3a21-7493-4208-a011-7f9ea79ce9f5}"
+
+        [HKEY_CLASSES_ROOT\Results\ShellEx\ContextMenuHandlers\OpenContainingFolderMenu]
+        @="{37ea3a21-7493-4208-a011-7f9ea79ce9f5}"
+
+
+
+;       * Add Settings to Desktop Context Menu
+;       https://www.tenforums.com/tutorials/31872-add-settings-context-menu-windows-10-a.html
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings]
+;       "Position"="Bottom"
+;       "Icon"="SystemSettingsBroker.exe"
+;       "SubCommands"=""
+
+;       Settings home page
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\01menu]
+;       "Icon"="SystemSettingsBroker.exe"
+;       "MUIVerb"="Settings"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\01menu\command]
+;       @="explorer ms-settings:"
+
+;       System category
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\02menu]
+;       "CommandFlags"=dword:00000020
+;       "MUIVerb"="System"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\02menu\command]
+;       @="explorer ms-settings:display"
+
+;       Devices category
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\03menu]
+;       "MUIVerb"="Devices"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\03menu\command]
+;       @="explorer ms-settings:bluetooth"
+
+;       Phone category
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\04menu]
+;       "MUIVerb"="Phone"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\04menu\command]
+;       @="explorer ms-settings:mobile-devices"
+
+;       Network & Internet category
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\05menu]
+;       "MUIVerb"="Network && Internet"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\05menu\command]
+;       @="explorer ms-settings:network"
+
+;       Personalization category
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\06menu]
+;       "MUIVerb"="Personalization"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\06menu\command]
+;       @="explorer ms-settings:personalization"
+
+;       Apps category
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\07menu]
+;       "MUIVerb"="Apps"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\07menu\command]
+;       @="explorer ms-settings:appsfeatures"
+
+;       Accounts category
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\08menu]
+;       "MUIVerb"="Accounts"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\08menu\command]
+;       @="explorer ms-settings:yourinfo"
+
+;       Time & language category
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\09menu]
+;       "MUIVerb"="Time && language"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\09menu\command]
+;       @="explorer ms-settings:dateandtime"
+
+;       Gaming category
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\10menu]
+;       "MUIVerb"="Gaming"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\10menu\command]
+;       @="explorer ms-settings:gaming-gamebar"
+
+;       Ease of Access category
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\11menu]
+;       "MUIVerb"="Ease of Access"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\11menu\command]
+;       @="explorer ms-settings:easeofaccess-narrator"
+
+;       Search category
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\12menu]
+;       "MUIVerb"="Search"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\12menu\command]
+;       @="explorer ms-settings:search-permissions"
+
+;       Privacy category
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\14menu]
+;       "MUIVerb"="Privacy"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\14menu\command]
+;       @="explorer ms-settings:privacy"
+
+;       Update & security category
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\15menu]
+;       "MUIVerb"="Update && security"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\15menu\command]
+;       @="explorer ms-settings:windowsupdate"
+
+;       Mixed Reality category
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\16menu]
+;       "MUIVerb"="Mixed Reality"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\16menu\command]
+;       @="explorer ms-settings:holographic"
+
+;   #######################################################
+
+
+
+
+
+;   #######################################################
+;   # KEYBOARD SETTINGS
+;   #######################################################
+
+;       * Change Keyboard Character Repeat Delay
+;       Value: 0(Short) ~ 3(Long), Default: 1
+;       https://www.tenforums.com/tutorials/136866-change-keyboard-character-repeat-delay-rate-windows.html
+
+        [HKEY_CURRENT_USER\Control Panel\Keyboard]
+        "KeyboardDelay"="0"
+
+
+
+;       * Change Keyboard Character Repeat Rate
+;       Value: 0(Slow) ~ 31(Fast), Default: 31
+;       https://www.tenforums.com/tutorials/136866-change-keyboard-character-repeat-delay-rate-windows.html
+
+        [HKEY_CURRENT_USER\Control Panel\Keyboard]
+        "KeyboardSpeed"="31"
+
+
+
+;       * Disable All MouseKeys Settings
+
+        [HKEY_CURRENT_USER\Control Panel\Accessibility\MouseKeys]
+        "Flags"="130"
+
+
+
+;       * Disable All StickeyKeys Settings
+
+        [HKEY_CURRENT_USER\Control Panel\Accessibility\StickyKeys]
+        "Flags"="2"
+
+
+
+;       * Disable All ToggleKeys Settings
+
+        [HKEY_CURRENT_USER\Control Panel\Accessibility\ToggleKeys]
+        "Flags"="34"
+
+
+;       ***************************************************
+;       * FilterKey Settings
+;       ***************************************************
+
+;           > Enable FilterKey but Disable the other FilterKey Settings
+;           This and RepeatKeys and SlowKeys settings will OVERRIDE settings in [HKEY_CURRENT_USER\Control Panel\Keyboard]
+
+            [HKEY_CURRENT_USER\Control Panel\Accessibility\Keyboard Response]
+            "Flags"="3"
+
+
+
+;           > BounceKey Settings - ignore repeated keystrokes for a specific amount of time.
+
+;               How long should the computer wait before accepting keystrokes?
+
+                [HKEY_CURRENT_USER\Control Panel\Accessibility\Keyboard Response]
+                "BounceTime"="0"
+                "Last BounceKey Setting"=dword:00000000
+
+
+
+;           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+;           > RepeatKeys and SlowKeys
+;           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+;               - How long do you want to hold down a key before your computer accepts the keystroke?
+;               Delay between KEYPRESS(by you) and FIRST KEYSTROKE(accepts by computer)
+
+                [HKEY_CURRENT_USER\Control Panel\Accessibility\Keyboard Response]
+                "DelayBeforeAcceptance"="0"
+                "Last Valid Wait"=dword:00000000
+
+
+
+;               - How long should the computer wait before accepting the 'first repeated' keystroke?
+;               Delay between FIRST KEYSTROKE and First Repeated Keystroke (ms)
+
+                [HKEY_CURRENT_USER\Control Panel\Accessibility\Keyboard Response]
+                "AutoRepeatDelay"="200"
+                "Last Valid Delay"=dword:000000C8
+
+
+
+;               - How long should the computer wait before accepting 'subsequent repeated' keystroke?
+;               Delay between REPEATED KEYSTROKE (ms)
+
+                [HKEY_CURRENT_USER\Control Panel\Accessibility\Keyboard Response]
+                "AutoRepeatRate"="20"
+                "Last Valid Repeat"=dword:0000000F
+
+;           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+;       ***************************************************
+
+;   #######################################################
+
+
+
+
+
+;   #######################################################
+;   # WINDOWS UPDATES
+;   #######################################################
+
+;       * Enable Update Apps Automatically in Store for All Users
+;       https://www.tenforums.com/tutorials/6664-turn-off-automatic-updates-apps-windows-10-store.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
+        "AutoDownload"=dword:00000004
+
+
+
+;       * Enable "Check for updates" in Windows Update
+;       https://www.tenforums.com/tutorials/65013-enable-disable-check-windows-updates-windows-10-a.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+        "SetDisableUXWUAccess"=-
+
+
+
+;       * Enable Automatic Updates
+;       https://www.tenforums.com/tutorials/8013-enable-disable-windows-update-automatic-updates-windows-10-a.html
+
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]
+
+
+
+;       * Enable Automatic Device Driver Installation
+;       https://www.tenforums.com/tutorials/15989-turn-off-device-driver-automatic-installation-windows-10-a.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata]
+        "PreventDeviceMetadataFromNetwork"=dword:00000000
+
+
+
+;       * Enable Including Driver Updates in Windows Update
+;       https://www.tenforums.com/tutorials/48277-enable-disable-driver-updates-windows-update-windows-10-a.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Update]
+        "ExcludeWUDriversInQualityUpdate"=dword:00000000
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Update]
+        "ExcludeWUDriversInQualityUpdate"=dword:00000000
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Update\ExcludeWUDriversInQualityUpdate]
+        "value"=dword:00000000
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings]
+        "ExcludeWUDriversInQualityUpdate"=dword:00000000
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+        "ExcludeWUDriversInQualityUpdate"=dword:00000000
+
+
+
+;       * Allow Windows Updates for other products (e.g. Microsoft Office)
+;       https://www.tenforums.com/tutorials/44926-turn-off-windows-updates-microsoft-products-windows-10-a.htmlhttps://www.tenforums.com/tutorials/44926-turn-off-windows-updates-microsoft-products-windows-10-a.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\WindowsUpdate\Services\7971f918-a847-4430-9279-4a52d1efe18d]
+        "RegisteredWithAU"=dword:00000001
+
+
+
+;       * Disable Allow downloads from other PCs
+;       https://www.tenforums.com/tutorials/4742-choose-how-windows-store-app-updates-downloaded-windows-10-a.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Settings]
+        "DownloadMode"="0"
+
+;   #######################################################
+
+
+
+
+
+;   #######################################################
+;   # TASKBAR
+;   #######################################################
+
+;       * Last active click: just click on the taskbar icon to return to the particular session
+;           (among several open) where you were last working
+;       Undo with "LastActiveClick"=-
+
+        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "LastActiveClick"=dword:00000001
+
+
+
+;       * Disable small icons
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "TaskbarSmallIcons"=dword:00000000
+
+
+
+;       * Never Combine buttons
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "TaskbarGlomLevel"=dword:00000002
+
+
+
+;       * Show Other Taskbars and Never Combine
+
+        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "MMTaskbarEnabled"=dword:00000001
+        "MMTaskbarGlomLevel"=dword:00000002
+
+
+
+;       * Show Seconds
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "ShowSecondsInSystemClock"=dword:00000001
+
+
+
+;       * Enable Animations
+;       https://www.tenforums.com/tutorials/126795-enable-disable-animations-taskbar-windows-10-a.html
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "TaskbarAnimations"=dword:00000001
+
+
+
+;       * Disable Pinning Store app
+
+        [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+        "NoPinningStoreToTaskbar"=dword:00000001
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+        "NoPinningStoreToTaskbar"=dword:00000001
+
+
+
+;       * Enable balloon notifications
+
+;       [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+;       "EnableLegacyBalloonNotifications"=dword:00000001
+
+
+
+;       * Disable cortana but keep search
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+        "PreventIndexOnBattery"=dword:00000001
+        "AllowSearchToUseLocation"=dword:00000000
+        "AllowCortana"=dword:00000000
+        "ConnectedSearchUseWeb"=dword:00000000
+        "DisableWebSearch"=dword:00000001
+        "PreventIndexingOutlook"=dword:00000001
+        "PreventIndexingEmailAttachments"=dword:00000001
+        "ConnectedSearchPrivacy"=dword:00000003
+        "ConnectedSearchSafeSearch"=dword:00000003
+        "ConnectedSearchUseWebOverMeteredConnections"=dword:00000000
+        "PreventRemoteQueries"=dword:00000001
+        "DisableRemovableDriveIndexing"=dword:00000001
+        "ConnectedSearchUseWeb"=dword:00000000
+        "BingSearchEnabled"=dword:00000000
+        "CortanaConsent"=dword:00000000
+        "AllowSearchToUseLocation"=dword:00000000
+        "AllowCloudSearch"=dword:00000000
+
+
+
+;       * Set notifications to remain visible for 24 hours
+;       Alternately set at Win-I > Ease of Access > Display > Simplify and personalize Windows > Show notifications for
+;       But the maximum at that location is 5 minutes
+
+;       [HKEY_CURRENT_USER\Control Panel\Accessibility]
+;       "MessageDuration"=dword:00015180
+
+;   #######################################################
+
+
+
+
+
+;   #######################################################
+;   # START MENU
+;   #######################################################
+
+;       * Restore the RunMRU (Most Recently Used) items for the Run dialog
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU]
+        "MRUList"="abcdefghijklmnopqrstuvwxyz"
+        "a"="notepad\\1"
+        "b"="regedit\\1"
+        "c"="cmd\\1"
+        "d"="shell:sendto\\1"
+        "e"="diskmgmt.msc\\1"
+        "f"="gpedit.msc\\1"
+        "g"="msinfo32\\1"
+        "h"="taskmgr\\1"
+        "i"="taskschd.msc\\1"
+        "j"="SystemPropertiesAdvanced\\1"
+        "k"="compmgmt.msc\\1"
+        "l"="services.msc\\1"
+        "m"="devmgmt.msc\\1"
+        "n"="msconfig\\1"
+        "o"="cleanmgr\\1"
+        "p"="lusrmgr.msc\\1"
+        "q"="explorer\\1"
+        "r"="control\\1"
+        "s"="mdsched\\1"
+        "t"="perfmon\\1"
+        "u"="dfrgui\\1"
+        "v"="resmon\\1"
+        "w"="powershell\\1"
+
+
+
+;       * Hide Most Used Apps on Windows 10 Start Menu
+;       https://www.majorgeeks.com/content/page/how_to_show_or_hide_most_used_apps_on_windows_10_start_menu.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+        "NoStartMenuMFUprogramsList"=dword:00000001
+
+;   #######################################################
+
+
+
+
+
+;   #######################################################
+;   # LOGIN, LOGOUT, SHUTDOWN
+;   #######################################################
+
+; Enable shutdown option without having to log in
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"shutdownwithoutlogon"=dword:00000001
+
+; Enable verbose service startup/shutdown messages
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"VerboseStatus"=dword:00000001
+
+; Remember my Explorer views
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+"NoSaveSettings"=dword:00000000
+
+; Disable automatic restart after crash so you can see error messages
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
+"AutoReboot"=dword:00000000
+
+; Manually generate a crash, for diagnosis, by hitting RightCtrl-ScrollLock (twice on the latter)
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\i8042prt\Parameters]
+"CrashOnCtrlScroll"=dword:00000001
+; Undo: "CrashOnCtrlScroll"=dword:00000000
+
+; Require Ctrl-Alt-Del to make it harder to hack the computer's login
+; Per Shawn Brink at http://www.tenforums.com/tutorials/15697-secure-sign-ctrl-alt-delete-enable-disable-windows-10-a.html
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+"DisableCAD"=dword:00000000
+[HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\Winlogon]
+"DisableCAD"=-
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"DisableCAD"=-
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+"DisableCAD"=-
+
+; Set minimum PIN length
+; Per Shawn Brink at https://www.tenforums.com/tutorials/80805-specify-maximum-minimum-pin-length-windows-10-a.html#option2
+; Values must be between 4 and 127, inclusive. I've set them at 5 and 127.
+; This may require restart and may require removal and re-entry of PIN.
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexity]
+"MinimumPINLength"=dword:00000005
+"MaximumPINLength"=dword:00000127
+
+; Show last login details at startup
+; Per MakeTechEasier at https://www.maketecheasier.com/know-if-someone-logging-into-windows-pc/
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"DisplayLastLogonInfo"=dword:00000001
+
+; Increase number of seconds in grace period after screensaver starts, before screen locks
+; Per Shawn Brink at https://www.tenforums.com/tutorials/47389-change-screen-saver-password-grace-period-windows.html
+; See also my writeup at https://www.tenforums.com/customization/127123-screensaver-countdown-feature.html
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+"ScreenSaverGracePeriod"=dword:00000015
+
+; Add a pre-lock screen notice to anyone who finds your laptop
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"legalnoticecaption"="Notice to Finder (restart computer to see this again)"
+"legalnoticetext"="Please contact me at [user contact information] to return this computer. Many thanks!"
+; Undo with:
+; "legalnoticecaption"=""
+; "legalnoticetext"=""
+
+
+; *****************************************************
+; MISCELLANY
+; *****************************************************
+
+; Prevent a touch by Windows tools (e.g., Beyond Compare) from changing EML file date and time to now.
+; After this, run EML Atributer.exe to reset EML dates and times that have already been changed, if any.
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\PropertySystem\PropertyHandlers\.eml]
+; Undo (so that a touch does change EML time and date to the present moment) with:
+; [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\PropertySystem\PropertyHandlers\.eml]
+; @="{5FA29220-36A1-40f9-89C6-F4B384B7642E}"
+
+; Change Edge browser download folder
+[HKEY_CURRENT_USER\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\Main]
+"Default Download Directory"="D:\Current"
+; Undo with "Default Download Directory"=-
+
+; When opening files with unknown extension, don't prompt to look for an app in the store
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"NoUseStoreOpenWith"=dword:00000001
+
+; Disable beep on error
+[HKEY_CURRENT_USER\Control Panel\Sound]
+"Beep"="No"
+
+; Turn off Office 2016 banner notifications: "Updates Available"
+; Per https://superuser.com/questions/1280203/disable-office-updates-available-notification
+; These registry edits seemed to work for me at first, but the banner returned later.
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\ClickToRun\Updates]
+"UpdatesBlockedTime"=""
+"UpdatesReadyToApply"=""
+; Undo with:
+; "UpdatesBlockedTime"="13199528890896"
+; "UpdatesReadyToApply"="0"
+
+; Keep NumLock always on
+; This may work only if Fast Startup is turned off. Setting NumLock in BIOS is best.
+[HKEY_CURRENT_USER\Control Panel\Keyboard]
+"InitialKeyboardIndicators"="2"
+
+; Overwrite paging file at shutdown for security
+; Doesn't take too long if pagefile is small
+; Overwriting is not reliable for wiping SSD, but it may help
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
+"ClearPageFileAtShutdown"=dword:00000001
+; Undo by changing value to dword:00000000
+
+; Prevent system from storing recently opened files
+; in C:\Users\Ray\AppData\Roaming\Microsoft\Windows\Recent
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"Start_TrackDocs"=dword:00000000
+; Use dword:00000001 to turn it back on
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;   Disable Advanced Indexing Options
+;   https://www.majorgeeks.com/content/page/advanced_indexing_options.html
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+    "PreventUsingAdvancedIndexingOptions"=dword:00000001
+
+
+
+;   Disable Advertising ID for Relevant Ads
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
+    "Enabled"=dword:00000000
+
+
+
+;   Disable App Launch Tracking in Windows 10
+;   https://www.majorgeeks.com/content/page/how_to_disable_app_launch_tracking_in_windows_10.html
+
+    [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\EdgeUI]
+    "DisableMFUTracking"=dword:00000001
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EdgeUI]
+    "DisableMFUTracking"=dword:00000001
+
+
+
+;   Disable Automatic Maintenance in Windows 10
+;   https://www.majorgeeks.com/content/page/how_to_disable_automatic_maintenance_in_windows_10.html
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]
+    "MaintenanceDisabled"=dword:00000001
+
+
+
+;   Disable Featured or Suggested Apps from Automatically Installing
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+    "SilentInstalledAppsEnabled"=dword:00000000
+
+
+
+;   Disable Get Even More Out Of Windows Screen & Welcome Experience Page
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+    "SubscribedContent-310093Enabled"=dword:00000000
+
+
+
+;   Disable Pre-launch Microsoft Edge
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]
+    "AllowPrelaunch"=dword:00000000
+
+
+
+;   Disable JPEG Desktop Wallpaper Import Quality Reduction
+
+    [HKEY_CURRENT_USER\Control Panel\Desktop]
+    "JPEGImportQuality"=dword:00000100
+
+
+
+;   Enable AutoEndTasks at Shut Down, Restart, or Sign Out
+;   https://www.majorgeeks.com/content/page/how_to_disable_autoendtasks_at_shut_downrestartor_sign_out.html
+
+    [HKEY_CURRENT_USER\Control Panel\Desktop]
+    "AutoEndTasks"="1"
+
+    [HKEY_USERS\.DEFAULT\Control Panel\Desktop]
+    "AutoEndTasks"="1"
+
+
+
+;   Enable Clipboard History
+;   https://www.tenforums.com/tutorials/110039-enable-disable-clipboard-history-windows-10-a.html#option1
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+    "AllowClipboardHistory"=-
+
+
+
+;   Disable Animate windows when minimizing and maximizing
+
+    [HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics]
+    "MinAnimate"="0"
+
+
+
+;   Enable Fast Startup
+;   https://www.majorgeeks.com/content/page/how_to_turn_fast_startup_on_or_off_in_windows_10.html
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+    "HiberbootEnabled"=dword:00000001
+
+
+
+;   Show Full Details When Deleting a File
+;   https://www.majorgeeks.com/content/page/show_full_details_when_deleting_a_file.html
+
+    [HKEY_CLASSES_ROOT\AllFilesystemObjects]
+    "ConflictPrompt"="prop:System.ItemTypeText;System.Size;System.DateModified;System.DateCreated"
+    "ExtendedTileInfo"="prop:System.ItemTypeText;System.Size;System.DateModified;System.OfflineAvailability"
+    "FullDetails"="prop:System.PropGroup.FileSystem;System.ItemNameDisplay;System.ItemTypeText;System.ItemFolderPathDisplay;System.Size;System.DateCreated;System.DateModified;System.FileAttributes;*System.StorageProviderState;*System.OfflineAvailability;*System.OfflineStatus;*System.SharedWith;*System.FileOwner;*System.ComputerName"
+    "InfoTip"="prop:System.ItemTypeText;System.Size;System.DateModified"
+    "NoRecentDocs"=""
+    "NoStaticDefaultVerb"=""
+    "PreviewDetails"="prop:System.DateModified;System.Size;System.DateCreated;*System.StorageProviderState;*System.OfflineAvailability;*System.OfflineStatus;*System.SharedWith"
+    "PreviewTitle"="prop:System.ItemNameDisplay;System.ItemTypeText"
+    "QuickTip"="prop:System.ItemTypeText;System.Size;System.DateModified"
+    "SetDefaultsFor"="prop:System.Author;System.Document.DateCreated"
+    "TileInfo"="prop:System.ItemTypeText;System.Size;System.DateModified"
+    "FileOperationPrompt"="prop:System.PropGroup.FileSystem;System.ItemNameDisplay;System.ItemTypeText;System.ItemFolderPathDisplay;System.Size;System.DateCreated;System.DateModified;System.FileAttributes;System.OfflineAvailability;System.OfflineStatus;System.SharedWith;System.FileOwner;System.ComputerName"
+
+
+
+;   Disable Find My Device in Windows 10
+;   https://www.majorgeeks.com/content/page/how_to_turn_on_or_off_find_my_device_in_windows_10.html
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Settings\FindMyDevice]
+    "LocationSyncEnabled"=dword:00000000
+
+
+
+;   Enable Game Mode
+;   https://www.tenforums.com/tutorials/75936-turn-off-game-mode-windows-10-a.html#option2
+
+    [HKEY_CURRENT_USER\Software\Microsoft\GameBar]
+    "AllowAutoGameMode"=dword:00000001
+    "AutoGameModeEnabled"=dword:00000001
+
+
+
+;   Disable Game Bar in Windows 10
+;   https://www.majorgeeks.com/content/page/how_to_turn_on_or_off_xbox_game_bar_in_windows_10.html
+
+    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR]
+    "AppCaptureEnabled"=dword:00000000
+
+    [HKEY_CURRENT_USER\System\GameConfigStore]
+    "GameDVR_Enabled"=dword:00000000
+
+
+
+;   Disable Windows Error Reporting
+
+    [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Windows Error Reporting]
+    "Disabled"=dword:00000001
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
+    "Disabled"=dword:00000001
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting]
+    "Disabled"=dword:00000001
+
+
+
+;   Enable Intelligent Active Hours
+;   https://www.tenforums.com/tutorials/121699-turn-off-automatically-adjust-active-hours-windows-10-a.html
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings]
+    "SmartActiveHoursState"=dword:00000001
+
+
+
+;   Enable Shut Down without Having to Log On
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+    "shutdownwithoutlogon"=dword:00000001
+
+
+
+;   Disable Tablet Mode
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ImmersiveShell]
+    "TabletMode"=dword:00000000
+    "SignInMode"=dword:00000002
+
+
+
+;   Disable System Restore
+
+;   [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore]
+;   "DisableSR"=dword:1
+;   [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SR]
+;   "Start"=dword:4
+;   [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore]
+;   "DiskPercent"=dword:0
+;   "RPGlobalInterval"=dword:0
+;   "RPLifeInterval"=dword:0
+;   "RPSessionInterval"=dword:0
+;   "DisableConfig"=dword:1
+
+
+
+;   Windows Media Player Skip EULA + First Time usage dialog
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MediaPlayer\Preferences]
+    "AcceptedEULA"=dword:00000001
+    "FirstTime"=dword:00000001
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsMediaPlayer]
+    "GroupPrivacyAcceptance"=dword:00000001
+
+
+;   Enable Share Across Devices for Apps from My devices only
+;   https://www.tenforums.com/tutorials/70947-turn-off-share-across-devices-apps-window-10-a.html
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CDP]
+    "CdpSessionUserAuthzPolicy"=dword:00000001
+    "NearShareChannelUserAuthzPolicy"=dword:00000000
+    "RomeSdkChannelUserAuthzPolicy"=dword:00000001
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CDP\SettingsPage]
+    "RomeSdkChannelUserAuthzPolicy"=dword:00000001
+
+
+
+;   Remove-Windows-Defender-To-Folder-Context-Menu
+
+;   [-HKEY_CLASSES_ROOT\Folder\shell\WindowsDefender]
+;   [-HKEY_CLASSES_ROOT\Folder\shell\WindowsDefender\Command]
+
+
+
+;   To Set Feedback Frequency to Never
+;   https://www.tenforums.com/tutorials/2441-how-change-feedback-frequency-windows-10-a.html
+
+    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Siuf\Rules]
+    "NumberOfSIUFInPeriod"=dword:00000000
+    "PeriodInNanoSeconds"=-
+
+
+
+;   Disable Windows Feedback Notifications
+;   https://www.tenforums.com/tutorials/2441-how-change-feedback-frequency-windows-10-a.htm
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection]
+    "DoNotShowFeedbackNotifications"=dword:00000001
+
+
+
+;   Disable AutoPlay in Windows 10
+;   https://www.majorgeeks.com/content/page/turn_autoplay_on_or_off.html
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers]
+    "DisableAutoplay"=dword:00000001
+
+
+
+;   Show all icons in the Control Panel
+
+    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ControlPanel]
+    "AllItemsIconView"=dword:00000002
+    "StartupPage"=dword:00000001
+
+
+
+;   No startup delay for prorams
+
+    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Serialize]
+    "StartupDelayInMSec"=dword:00000000
+
+
+
+;   Disable most of Ads
+
+    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+    "SystemPaneSuggestionsEnabled"=dword:00000000
+
+    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+    "ShowSyncProviderNotifications"=dword:00000000
+
+    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+    "SoftLandingEnabled"=dword:00000000
+
+    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+    "RotatingLockScreenEnabled"=dword:00000000
+
+    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+    "RotatingLockScreenOverlayEnabled"=dword:00000000
+
+
+
+;   Disable Aero Shake
+;   http://www.howtogeek.com/278996/how-to-disable-aero-shake-in-windows/
+
+    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+    "DisallowShaking"=dword:00000001
+
+
+
+;   Status bar (bottom) in Explorer.
+
+    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+    "ShowStatusBar"=dword:00000001
+
+
+
+;   Don't Replace Command Prompt with Windows PowerShell On the WinX Menu
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+    "DontUsePowerShellOnWinX"=dword:00000001
+
+
+
+
+
+
+
+;   disable narrator
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Narrator\NoRoam]
+    "WinEnterLaunchEnabled"=dword:00000000
+
+
+
+;   disable accessibility options
+
+;   [HKEY_CURRENT_USER\Control Panel\Accessibility\ToggleKeys]
+;   "Flags"="58"
+
+;   [HKEY_CURRENT_USER\Control Panel\Accessibility\StickyKeys]
+;   "Flags"="506"
+
+
+
+;   Unnecessarily writing on SSD will shorten the lifetime
+;   https://translate.google.com/translate?hl=en&sl=ja&u=http://blog.livedoor.jp/nichepcgamer/archives/1071061265.html&prev=search
+;   80000000 (hex) = User Managed, Last Access Updates Enabled
+;   80000001 (hex) = User Managed, Last Access Updates Disabled
+;   80000002 (hex) = System Managed, Last Access Updates Enabled
+;   80000003 (hex) = System Managed, Last Access Updates Disabled
+
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem]
+    "NtfsDisableLastAccessUpdate"=dword:80000001
+
+
+
+;   Register and unregister dll and ocx files context menus
+
+    [HKEY_CLASSES_ROOT\dllfile\Shell]
+    [HKEY_CLASSES_ROOT\dllfile\Shell\Register]
+    [HKEY_CLASSES_ROOT\dllfile\Shell\Register\command]
+    [HKEY_CLASSES_ROOT\ocxfile\Shell]
+    [HKEY_CLASSES_ROOT\ocxfile\Shell\Register]
+    [HKEY_CLASSES_ROOT\ocxfile\Shell\Register\command]
+    @="regsvr32.exe \\\"%1\\\""
+    [HKEY_CLASSES_ROOT\dllfile\Shell\UnRegister]
+    [HKEY_CLASSES_ROOT\dllfile\Shell\UnRegister\command]
+    [HKEY_CLASSES_ROOT\ocxfile\Shell\UnRegister]
+    [HKEY_CLASSES_ROOT\ocxfile\Shell\UnRegister\command]
+    @="regsvr32.exe /u \\\"%1\\\""
+
+
+
+;   Enable verbose service startup/shutdown messages
+
+;   [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+;   "VerboseStatus"=dword:00000001
+
+
+
+;   Enable Windows Explorer StatusBar
+
+    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\Main]
+    "Show_StatusBar"="yes"
+    "StatusBarOther"=dword:00000001
+
+
+
+
+
+
+;   Office Telemetry/Disable data collection for Telemetry Agent
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Common]
+    "sendcustomerdata"=dword:00000000
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Common\Feedback]
+    "enabled"=dword:00000000
+    "includescreenshot"=dword:00000000
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\Options\Mail]
+    "EnableLogging"=dword:00000000
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Word\Options]
+    "EnableLogging"=dword:00000000
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Office\Common\ClientTelemetry]
+    "DisableTelemetry"=dword:00000001
+
+    [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\Common]
+    "qmenable"=dword:00000000
+    "updatereliabilitydata"=dword:00000000
+
+    [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\Common\General]
+    "shownfirstrunoptin"=dword:00000000
+    "skydrivesigninoption"=dword:00000000
+
+    [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\Common\ptwatson]
+    "ptwoptin"=dword:00000000
+
+    [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\Firstrun]
+    "disablemovie"=dword:00000001
+
+    [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\OSM]
+    "Enablelogging"=dword:00000000
+    "EnableUpload"=dword:00000000
+
+    [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\OSM\preventedapplications]
+    "accesssolution"=dword:00000001
+    "olksolution"=dword:00000001
+    "onenotesolution"=dword:00000001
+    "pptsolution"=dword:00000001
+    "projectsolution"=dword:00000001
+    "publishersolution"=dword:00000001
+    "visiosolution"=dword:00000001
+    "wdsolution"=dword:00000001
+    "xlsolution"=dword:00000001
+
+    [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\OSM\preventedsolutiontypes]
+    "agave"=dword:00000001
+    "appaddins"=dword:00000001
+    "comaddins"=dword:00000001
+    "documentfiles"=dword:00000001
+    "templatefiles"=dword:00000001
+
+
+
+;   Keep NUMLock always on
+
+    [HKEY_CURRENT_USER\Control Panel\Keyboard]
+    "InitialKeyboardIndicators"="2"
+
+
+
+;   Disable Auto Corrention on Hardware Keyboard
+;   https://www.tenforums.com/tutorials/98269-turn-off-autocorrect-hardware-keyboard-windows-10-a.html
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Input\Settings]
+    "EnableHwkbAutocorrection"=dword:00000000
+
+
+
+;   Realtek high-pitch sound crackling fix
+
+    [HKEY_CURRENT_USER\Software\Realtek\Audio\RtkNGUI64\PowerMgnt]
+    "Enabled"=dword:00000001
+    "DelayTime"=dword:00000003
+    "OnlyBattery"=dword:00000000
+    "PowerState"=dword:00000000
+
+
+
+;   Speed up the Shell and the Desktop by increasing (lowering) some timeout's
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+    "DesktopLivePreviewHoverTime"=dword:00000001
+
+    [HKEY_CURRENT_USER\Control Panel\Mouse]
+    "MouseHoverTime"="1"
+
+    [HKEY_CURRENT_USER\Control Panel\Desktop]
+    "MenuShowDelay"="1"
+
+    [HKEY_CURRENT_USER\Control Panel\Desktop]
+    "ActiveWndTrackTimeout"=dword:0000000a
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+    "Start_ShowRun"=dword:00000001
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+    "NoLowDiskSpaceChecks"=dword:00000001
+    "LinkResolveIgnoreLinkInfo"=dword:00000001
+    "NoResolveSearch"=dword:00000001
+    "NoResolveTrack"=dword:00000001
+    "NoInternetOpenWith"=dword:00000001
+
+    [HKEY_CURRENT_USER\Control Panel\Desktop]
+    "AutoEndTasks"="1"
+    "HungAppTimeout"="2000"
+    "MenuShowDelay"="0"
+    "WaitToKillAppTimeout"="2500"
+    "LowLevelHooksTimeout"="2000"
+
+    [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Control]
+    "WaitToKillServiceTimeout"="2000"
+
+    [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control]
+    "WaitToKillServiceTimeout"="2000"
+
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control]
+    "WaitToKillServiceTimeout"="2000"
+
+
+
+;   Disable Dump File creation on BSOD
+
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
+    "AutoReboot"=dword:00000001
+    "CrashDumpEnabled"=dword:00000000
+    "Overwrite"=dword:00000001
+    "LogEvent"=dword:00000001
+    "DumpFile"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,\
+    74,00,25,00,5c,00,4d,00,45,00,4d,00,4f,00,52,00,59,00,2e,00,44,00,4d,00,50,\
+    00,00,00
+    "MinidumpDir"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,\
+    00,74,00,25,00,5c,00,4d,00,69,00,6e,00,69,00,64,00,75,00,6d,00,70,00,00,00
+    "DumpFilters"=hex(7):64,00,75,00,6d,00,70,00,66,00,76,00,65,00,2e,00,73,00,79,\
+    00,73,00,00,00,00,00
+
+
+
+;   Disable Auto System Sounds Leveling (Reduce all other by 80% -> Do Nothing)
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Multimedia\Audio]
+    "UserDuckingPreference"=dword:00000003
+
+
+
+;   Disable Microsoft OneDrive
+
+;   [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]
+;   "DisableFileSyncNGSC"=dword:00000001
+
+
+
+;   Disable Cortana Win+C Keyboard Shortcut
+;   https://www.tenforums.com/tutorials/74284-turn-off-cortana-listen-keyboard-shortcut-windows-10-a.html
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
+    "VoiceShortcut"=dword:00000000
+
+
+
+;   Disable High Contrast Keyboard Shortcut
+;   https://www.tenforums.com/tutorials/103598-enable-disable-high-contrast-keyboard-shortcut-windows.html
+
+    [HKEY_CURRENT_USER\Control Panel\Accessibility\HighContrast]
+    "Flags"="4218"
+
+
+
+;   Disable AutoPlay
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+    "NoDriveTypeAutoRun"=dword:000000ff
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+    "NoDriveTypeAutoRun"=-
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+    "NoAutoplayfornonVolume"=dword:00000001
+
+    [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
+    "NoAutoplayfornonVolume"=-
+
+
+
+;   Enable Confirmation of file deletion
+
+;   [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+;   "ConfirmFileDelete"=dword:00000001
+
+
+
+
+;   Disable online tips and help for Settings app
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+    "AllowOnlineTips"=dword:00000000
+
+
+
+;   Disable Activity history
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+    "PublishUserActivities"=dword:00000000
+
+
+
+;   Hide Microsoft Edge button in IE
+
+    [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Internet Explorer\Main]
+    "HideNewEdgeButton"=dword:00000001
+
+
+
+;   Restore functionality of older Photo Viewer
+;   Change Extension's File Type
+
+;   [HKEY_CURRENT_USER\Software\Classes\.jpg]
+;   @="PhotoViewer.FileAssoc.Tiff"
+
+;   [HKEY_CURRENT_USER\Software\Classes\.jpeg]
+;   @="PhotoViewer.FileAssoc.Tiff"
+
+;   [HKEY_CURRENT_USER\Software\Classes\.gif]
+;   @="PhotoViewer.FileAssoc.Tiff"
+
+;   [HKEY_CURRENT_USER\Software\Classes\.png]
+;   @="PhotoViewer.FileAssoc.Tiff"
+
+;   [HKEY_CURRENT_USER\Software\Classes\.bmp]
+;   @="PhotoViewer.FileAssoc.Tiff"
+
+;   [HKEY_CURRENT_USER\Software\Classes\.tiff]
+;   @="PhotoViewer.FileAssoc.Tiff"
+
+;   [HKEY_CURRENT_USER\Software\Classes\.ico]
+;   @="PhotoViewer.FileAssoc.Tiff"
+
+
+
+;   Disable Internet Explorer Send Feedback Smiley Button
+;   https://www.tenforums.com/tutorials/56530-remove-internet-explorer-send-feedback-smiley-button.html
+
+    [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Internet Explorer\Restrictions]
+    "NoHelpItemSendFeedback"=dword:00000001
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Restrictions]
+    "NoHelpItemSendFeedback"=dword:00000001
+
+
+
+;   Fix Slow-Loading Windows Icons by Increasing the Icon Cache
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+    "Max Cached Icons"="4096"
+
+
+
+;   FF to disable all IPv6 components, except the IPv6 loopback interface, which can't be deactivated.
+;   0x01  to disable IPv6 all tunnel interfaces. These include Intra-Site Automatic Tunnel Addressing Protocol (ISATAP), 6to4, and Teredo. If you have a IPv6 router, then you want to choose this one.
+
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters]
+    "DisabledComponents"=dword:000000ff
+
+
+
+;   Disable Malicious Software Removal Tool
+
+;   [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
+;   "DontOfferThroughWUAU"=dword:00000001
+
+
+
+;   Disable Malicious Software Reporting tool diagnostic data
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
+    "DontReportInfectionInformation"=dword:00000001
+
+
+
+;   Disable Windows Error Reporting current user
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Windows\Windows Error Reporting]
+    "Disabled"=dword:00000001
+
+
+
+;   Disable Windows Store
+
+;   [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsStore]
+;   "RemoveWindowsStore"=dword:00000001
+
+
+
+;   NETWORK TWEAKS
+
+        [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters]
+        "SizReqBuf"=dword:0000ffff
+
+        [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters]
+        "DefaultTTL"=dword:00000040
+
+
+
+;       Enable Hardware Accelerated GPU Scheduling
+
+        [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers]
+        "HwSchMode"=dword:00000002
+
+
+
+;       Unlimit reservable bandwidth
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Psched]
+        "NonBestEffortLimit"=dword:00000000
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games]
+        "GPU Priority"=dword:00000008
+        "Priority"=dword:00000006
+        "Scheduling Category"="High"
+        "SFIO Priority"="High"
+
+
+
+;       Disable Nagle's Algorithm (Apply Manually)
+
+;       HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{NIC-id}
+;       "TcpAckFrequency"=dword:00000001
+;       "TcpNoDelay"=dword:00000001
+;       "TcpDelAckTicks"=dword:00000000
+
+
+
+;       Disable Network Throttling Index
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile]
+        "NetworkThrottlingIndex"=dword:ffffffff
+        "SystemResponsiveness"=dword:00000000
+
+
+
+;       Disable Administrative Shares from Windows Server
+
+;       [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lanmanserver\parameters]
+;       “AutoShareServer”=dword:00000000
+
+
+
+;   Set CPU Time
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl]
+    "Win32PrioritySeparation"=dword:00000026
+
+
+
+;   IE 동시에 다운로드받는 파일 수 증가(원래 기본 값은 2개이다)
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings]
+    "MaxConnectionsPer1_0Server"=dword:00000064
+    "MaxConnectionsPerServer"=dword:00000064
+
+
+
+;   IE 업로드 속도 증가
+
+    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings]
+    "SocketSendBufferLength"=dword:00010000
+
+
+
+;   DNS 캐시 엑세스 빠르게(웹 브라우저 속도 향상)
+
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters]
+    "CacheHashTableBucketSize"=dword:00000001
+    "CacheHashTableSize"=dword:00000180
+    "MaxCacheEntryTtlLimit"=dword:0000fa00
+    "MaxSOACacheEntryTtlLimit "=dword:0000012d
+
+
+
+;   Enable Command Prompt Autocomplete
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Command Processor]
+    "CompletionChar"=dword:00000009
+    "PathCompletionChar"=dword:00000009
