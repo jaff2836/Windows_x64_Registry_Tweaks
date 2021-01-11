@@ -791,6 +791,14 @@ Windows Registry Editor Version 5.00
 
 
 
+;       * Disable Auto Corrention on Hardware Keyboard
+;       https://www.tenforums.com/tutorials/98269-turn-off-autocorrect-hardware-keyboard-windows-10-a.html
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Input\Settings]
+        "EnableHwkbAutocorrection"=dword:00000000
+
+
+
 ;       * Disable All MouseKeys Settings
 
         [HKEY_CURRENT_USER\Control Panel\Accessibility\MouseKeys]
@@ -1099,64 +1107,82 @@ Windows Registry Editor Version 5.00
 ;   # LOGIN, LOGOUT, SHUTDOWN
 ;   #######################################################
 
-; Enable shutdown option without having to log in
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
-"shutdownwithoutlogon"=dword:00000001
+;       * Enable shutdown option without having to log in
 
-; Enable verbose service startup/shutdown messages
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
-"VerboseStatus"=dword:00000001
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+        "shutdownwithoutlogon"=dword:00000001
 
-; Remember my Explorer views
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
-"NoSaveSettings"=dword:00000000
 
-; Disable automatic restart after crash so you can see error messages
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
-"AutoReboot"=dword:00000000
 
-; Manually generate a crash, for diagnosis, by hitting RightCtrl-ScrollLock (twice on the latter)
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\i8042prt\Parameters]
-"CrashOnCtrlScroll"=dword:00000001
-; Undo: "CrashOnCtrlScroll"=dword:00000000
+;       * Enable verbose service startup/shutdown messages
 
-; Require Ctrl-Alt-Del to make it harder to hack the computer's login
-; Per Shawn Brink at http://www.tenforums.com/tutorials/15697-secure-sign-ctrl-alt-delete-enable-disable-windows-10-a.html
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
-"DisableCAD"=dword:00000000
-[HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\Winlogon]
-"DisableCAD"=-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
-"DisableCAD"=-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System]
-"DisableCAD"=-
+;        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+;        "VerboseStatus"=dword:00000001
 
-; Set minimum PIN length
-; Per Shawn Brink at https://www.tenforums.com/tutorials/80805-specify-maximum-minimum-pin-length-windows-10-a.html#option2
-; Values must be between 4 and 127, inclusive. I've set them at 5 and 127.
-; This may require restart and may require removal and re-entry of PIN.
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexity]
-"MinimumPINLength"=dword:00000005
-"MaximumPINLength"=dword:00000127
 
-; Show last login details at startup
-; Per MakeTechEasier at https://www.maketecheasier.com/know-if-someone-logging-into-windows-pc/
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
-"DisplayLastLogonInfo"=dword:00000001
 
-; Increase number of seconds in grace period after screensaver starts, before screen locks
-; Per Shawn Brink at https://www.tenforums.com/tutorials/47389-change-screen-saver-password-grace-period-windows.html
-; See also my writeup at https://www.tenforums.com/customization/127123-screensaver-countdown-feature.html
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
-"ScreenSaverGracePeriod"=dword:00000015
+;       * Remember my Explorer views
 
-; Add a pre-lock screen notice to anyone who finds your laptop
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
-"legalnoticecaption"="Notice to Finder (restart computer to see this again)"
-"legalnoticetext"="Please contact me at [user contact information] to return this computer. Many thanks!"
-; Undo with:
-; "legalnoticecaption"=""
-; "legalnoticetext"=""
+        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+        "NoSaveSettings"=dword:00000000
+
+
+
+;       * Disable automatic restart after crash so you can see error messages
+
+        [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
+        "AutoReboot"=dword:00000000
+
+
+
+;       * Require Ctrl-Alt-Del to make it harder to hack the computer's login
+;       http://www.tenforums.com/tutorials/15697-secure-sign-ctrl-alt-delete-enable-disable-windows-10-a.html
+
+;       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+;       "DisableCAD"=dword:00000000
+
+;       [HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\Winlogon]
+;       "DisableCAD"=-
+
+;       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+;       "DisableCAD"=-
+
+;       [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+;       "DisableCAD"=-
+
+
+
+;       * Set minimum PIN length
+;       Values must be between 4 and 127, inclusive.
+;       This may require restart and may require removal and re-entry of PIN.
+;       https://www.tenforums.com/tutorials/80805-specify-maximum-minimum-pin-length-windows-10-a.html#option2
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexity]
+        "MinimumPINLength"=dword:00000004
+        "MaximumPINLength"=dword:0000007F
+
+
+
+;       * Show last login details at startup
+;       https://www.maketecheasier.com/know-if-someone-logging-into-windows-pc/
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+        "DisplayLastLogonInfo"=dword:00000001
+
+
+
+;       * Increase number of seconds in grace period after screensaver starts, before screen locks
+;       * Per Shawn Brink at https://www.tenforums.com/tutorials/47389-change-screen-saver-password-grace-period-windows.html
+;       * See also my writeup at https://www.tenforums.com/customization/127123-screensaver-countdown-feature.html
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+        "ScreenSaverGracePeriod"=dword:00000015
+
+;       * Add a pre-lock screen notice to anyone who finds your laptop
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+        "legalnoticecaption"="Notice to Finder (restart computer to see this again)"
+        "legalnoticetext"="Please contact me at [user contact information] to return this computer. Many thanks!"
+;       * Undo with:
+;       * "legalnoticecaption"=""
+;       * "legalnoticetext"=""
 
 
 ; *****************************************************
@@ -1392,14 +1418,6 @@ Windows Registry Editor Version 5.00
     "SmartActiveHoursState"=dword:00000001
 
 
-
-;   Enable Shut Down without Having to Log On
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
-    "shutdownwithoutlogon"=dword:00000001
-
-
-
 ;   Disable Tablet Mode
 
     [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ImmersiveShell]
@@ -1584,12 +1602,6 @@ Windows Registry Editor Version 5.00
 
 
 
-;   Enable verbose service startup/shutdown messages
-
-;   [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
-;   "VerboseStatus"=dword:00000001
-
-
 
 ;   Enable Windows Explorer StatusBar
 
@@ -1662,14 +1674,6 @@ Windows Registry Editor Version 5.00
 
     [HKEY_CURRENT_USER\Control Panel\Keyboard]
     "InitialKeyboardIndicators"="2"
-
-
-
-;   Disable Auto Corrention on Hardware Keyboard
-;   https://www.tenforums.com/tutorials/98269-turn-off-autocorrect-hardware-keyboard-windows-10-a.html
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Input\Settings]
-    "EnableHwkbAutocorrection"=dword:00000000
 
 
 
@@ -1948,37 +1952,6 @@ Windows Registry Editor Version 5.00
 
 ;       [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lanmanserver\parameters]
 ;       “AutoShareServer”=dword:00000000
-
-
-
-;   Set CPU Time
-    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl]
-    "Win32PrioritySeparation"=dword:00000026
-
-
-
-;   IE 동시에 다운로드받는 파일 수 증가(원래 기본 값은 2개이다)
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings]
-    "MaxConnectionsPer1_0Server"=dword:00000064
-    "MaxConnectionsPerServer"=dword:00000064
-
-
-
-;   IE 업로드 속도 증가
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings]
-    "SocketSendBufferLength"=dword:00010000
-
-
-
-;   DNS 캐시 엑세스 빠르게(웹 브라우저 속도 향상)
-
-    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters]
-    "CacheHashTableBucketSize"=dword:00000001
-    "CacheHashTableSize"=dword:00000180
-    "MaxCacheEntryTtlLimit"=dword:0000fa00
-    "MaxSOACacheEntryTtlLimit "=dword:0000012d
 
 
 
