@@ -1,4 +1,4 @@
-Windows Registry Editor Version 5.00
+    Windows Registry Editor Version 5.00
 
 
 ;   This is the List of Registry Tweaks by Jaff2836.
@@ -142,7 +142,7 @@ Windows Registry Editor Version 5.00
 
 
 ;       * Allow selecting and opening more than 15 items
-;       * Works for opening multiple PDFs, apparently also for right-click Print command
+;       Works for opening multiple PDFs, apparently also for right-click Print command
 
         [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
         "MultipleInvokePromptMinimum"=dword:00000100
@@ -227,6 +227,18 @@ Windows Registry Editor Version 5.00
 
         [HKEY_CURRENT_USER\Software\Policies\Microsoft\PreviousVersions]
         "DisableLocalPage"=-
+
+
+
+;       * Remove "Scan with Microsoft Defender" from Context Menu
+
+;       [-HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\EPP]
+
+;       [-HKEY_CLASSES_ROOT\CLSID\{09A47860-11B0-4DA5-AFA5-26D86198A780}]
+
+;       [-HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\EPP]
+
+;       [-HKEY_CLASSES_ROOT\Drive\shellex\ContextMenuHandlers\EPP]
 
 
 
@@ -456,6 +468,7 @@ Windows Registry Editor Version 5.00
 
         [HKEY_CLASSES_ROOT\Directory\shell\copylist\command]
         @="cmd /c dir \"%1\" /a:-d /o:n | clip"
+
 ;       Alternative: copy only simple names, no details
 ;       [HKEY_CLASSES_ROOT\Directory\shell\copylist]
 ;       @="Copy File List to Clipboard"
@@ -773,6 +786,14 @@ Windows Registry Editor Version 5.00
 ;   # KEYBOARD SETTINGS
 ;   #######################################################
 
+;       * Keep NumLock always on
+;       This may work only if Fast Startup is turned off. Setting NumLock in BIOS is best.
+
+        [HKEY_CURRENT_USER\Control Panel\Keyboard]
+        "InitialKeyboardIndicators"="2"
+
+
+
 ;       * Change Keyboard Character Repeat Delay
 ;       Value: 0(Short) ~ 3(Long), Default: 1
 ;       https://www.tenforums.com/tutorials/136866-change-keyboard-character-repeat-delay-rate-windows.html
@@ -871,6 +892,28 @@ Windows Registry Editor Version 5.00
                 "Last Valid Repeat"=dword:0000000F
 
 ;           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+;       ***************************************************
+
+
+
+;       ***************************************************
+;       * Shortcuts
+;       ***************************************************
+
+;           > Disable Cortana Win+C Keyboard Shortcut
+;           https://www.tenforums.com/tutorials/74284-turn-off-cortana-listen-keyboard-shortcut-windows-10-a.html
+
+            [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
+            "VoiceShortcut"=dword:00000000
+
+
+
+;           > Disable High Contrast Keyboard Shortcut
+;           https://www.tenforums.com/tutorials/103598-enable-disable-high-contrast-keyboard-shortcut-windows.html
+
+            [HKEY_CURRENT_USER\Control Panel\Accessibility\HighContrast]
+            "Flags"="4218"
 
 ;       ***************************************************
 
@@ -1176,732 +1219,27 @@ Windows Registry Editor Version 5.00
         [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
         "ScreenSaverGracePeriod"=dword:00000015
 
+
+
 ;       * Add a pre-lock screen notice to anyone who finds your laptop
+;       Undo with:
+;       "legalnoticecaption"=""
+;       "legalnoticetext"=""
         [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
         "legalnoticecaption"="Notice to Finder (restart computer to see this again)"
         "legalnoticetext"="Please contact me at [user contact information] to return this computer. Many thanks!"
-;       * Undo with:
-;       * "legalnoticecaption"=""
-;       * "legalnoticetext"=""
 
+;   #######################################################
 
-; *****************************************************
-; MISCELLANY
-; *****************************************************
 
-; Prevent a touch by Windows tools (e.g., Beyond Compare) from changing EML file date and time to now.
-; After this, run EML Atributer.exe to reset EML dates and times that have already been changed, if any.
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\PropertySystem\PropertyHandlers\.eml]
-; Undo (so that a touch does change EML time and date to the present moment) with:
-; [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\PropertySystem\PropertyHandlers\.eml]
-; @="{5FA29220-36A1-40f9-89C6-F4B384B7642E}"
 
-; Change Edge browser download folder
-[HKEY_CURRENT_USER\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\Main]
-"Default Download Directory"="D:\Current"
-; Undo with "Default Download Directory"=-
 
-; When opening files with unknown extension, don't prompt to look for an app in the store
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
-"NoUseStoreOpenWith"=dword:00000001
 
-; Disable beep on error
-[HKEY_CURRENT_USER\Control Panel\Sound]
-"Beep"="No"
+;   #######################################################
+;   # NETWORK
+;   #######################################################
 
-; Turn off Office 2016 banner notifications: "Updates Available"
-; Per https://superuser.com/questions/1280203/disable-office-updates-available-notification
-; These registry edits seemed to work for me at first, but the banner returned later.
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\ClickToRun\Updates]
-"UpdatesBlockedTime"=""
-"UpdatesReadyToApply"=""
-; Undo with:
-; "UpdatesBlockedTime"="13199528890896"
-; "UpdatesReadyToApply"="0"
-
-; Keep NumLock always on
-; This may work only if Fast Startup is turned off. Setting NumLock in BIOS is best.
-[HKEY_CURRENT_USER\Control Panel\Keyboard]
-"InitialKeyboardIndicators"="2"
-
-; Overwrite paging file at shutdown for security
-; Doesn't take too long if pagefile is small
-; Overwriting is not reliable for wiping SSD, but it may help
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
-"ClearPageFileAtShutdown"=dword:00000001
-; Undo by changing value to dword:00000000
-
-; Prevent system from storing recently opened files
-; in C:\Users\Ray\AppData\Roaming\Microsoft\Windows\Recent
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
-"Start_TrackDocs"=dword:00000000
-; Use dword:00000001 to turn it back on
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;   Disable Advanced Indexing Options
-;   https://www.majorgeeks.com/content/page/advanced_indexing_options.html
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
-    "PreventUsingAdvancedIndexingOptions"=dword:00000001
-
-
-
-;   Disable Advertising ID for Relevant Ads
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
-    "Enabled"=dword:00000000
-
-
-
-;   Disable App Launch Tracking in Windows 10
-;   https://www.majorgeeks.com/content/page/how_to_disable_app_launch_tracking_in_windows_10.html
-
-    [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\EdgeUI]
-    "DisableMFUTracking"=dword:00000001
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EdgeUI]
-    "DisableMFUTracking"=dword:00000001
-
-
-
-;   Disable Automatic Maintenance in Windows 10
-;   https://www.majorgeeks.com/content/page/how_to_disable_automatic_maintenance_in_windows_10.html
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]
-    "MaintenanceDisabled"=dword:00000001
-
-
-
-;   Disable Featured or Suggested Apps from Automatically Installing
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
-    "SilentInstalledAppsEnabled"=dword:00000000
-
-
-
-;   Disable Get Even More Out Of Windows Screen & Welcome Experience Page
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
-    "SubscribedContent-310093Enabled"=dword:00000000
-
-
-
-;   Disable Pre-launch Microsoft Edge
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]
-    "AllowPrelaunch"=dword:00000000
-
-
-
-;   Disable JPEG Desktop Wallpaper Import Quality Reduction
-
-    [HKEY_CURRENT_USER\Control Panel\Desktop]
-    "JPEGImportQuality"=dword:00000100
-
-
-
-;   Enable AutoEndTasks at Shut Down, Restart, or Sign Out
-;   https://www.majorgeeks.com/content/page/how_to_disable_autoendtasks_at_shut_downrestartor_sign_out.html
-
-    [HKEY_CURRENT_USER\Control Panel\Desktop]
-    "AutoEndTasks"="1"
-
-    [HKEY_USERS\.DEFAULT\Control Panel\Desktop]
-    "AutoEndTasks"="1"
-
-
-
-;   Enable Clipboard History
-;   https://www.tenforums.com/tutorials/110039-enable-disable-clipboard-history-windows-10-a.html#option1
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
-    "AllowClipboardHistory"=-
-
-
-
-;   Disable Animate windows when minimizing and maximizing
-
-    [HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics]
-    "MinAnimate"="0"
-
-
-
-;   Enable Fast Startup
-;   https://www.majorgeeks.com/content/page/how_to_turn_fast_startup_on_or_off_in_windows_10.html
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
-    "HiberbootEnabled"=dword:00000001
-
-
-
-;   Show Full Details When Deleting a File
-;   https://www.majorgeeks.com/content/page/show_full_details_when_deleting_a_file.html
-
-    [HKEY_CLASSES_ROOT\AllFilesystemObjects]
-    "ConflictPrompt"="prop:System.ItemTypeText;System.Size;System.DateModified;System.DateCreated"
-    "ExtendedTileInfo"="prop:System.ItemTypeText;System.Size;System.DateModified;System.OfflineAvailability"
-    "FullDetails"="prop:System.PropGroup.FileSystem;System.ItemNameDisplay;System.ItemTypeText;System.ItemFolderPathDisplay;System.Size;System.DateCreated;System.DateModified;System.FileAttributes;*System.StorageProviderState;*System.OfflineAvailability;*System.OfflineStatus;*System.SharedWith;*System.FileOwner;*System.ComputerName"
-    "InfoTip"="prop:System.ItemTypeText;System.Size;System.DateModified"
-    "NoRecentDocs"=""
-    "NoStaticDefaultVerb"=""
-    "PreviewDetails"="prop:System.DateModified;System.Size;System.DateCreated;*System.StorageProviderState;*System.OfflineAvailability;*System.OfflineStatus;*System.SharedWith"
-    "PreviewTitle"="prop:System.ItemNameDisplay;System.ItemTypeText"
-    "QuickTip"="prop:System.ItemTypeText;System.Size;System.DateModified"
-    "SetDefaultsFor"="prop:System.Author;System.Document.DateCreated"
-    "TileInfo"="prop:System.ItemTypeText;System.Size;System.DateModified"
-    "FileOperationPrompt"="prop:System.PropGroup.FileSystem;System.ItemNameDisplay;System.ItemTypeText;System.ItemFolderPathDisplay;System.Size;System.DateCreated;System.DateModified;System.FileAttributes;System.OfflineAvailability;System.OfflineStatus;System.SharedWith;System.FileOwner;System.ComputerName"
-
-
-
-;   Disable Find My Device in Windows 10
-;   https://www.majorgeeks.com/content/page/how_to_turn_on_or_off_find_my_device_in_windows_10.html
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Settings\FindMyDevice]
-    "LocationSyncEnabled"=dword:00000000
-
-
-
-;   Enable Game Mode
-;   https://www.tenforums.com/tutorials/75936-turn-off-game-mode-windows-10-a.html#option2
-
-    [HKEY_CURRENT_USER\Software\Microsoft\GameBar]
-    "AllowAutoGameMode"=dword:00000001
-    "AutoGameModeEnabled"=dword:00000001
-
-
-
-;   Disable Game Bar in Windows 10
-;   https://www.majorgeeks.com/content/page/how_to_turn_on_or_off_xbox_game_bar_in_windows_10.html
-
-    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR]
-    "AppCaptureEnabled"=dword:00000000
-
-    [HKEY_CURRENT_USER\System\GameConfigStore]
-    "GameDVR_Enabled"=dword:00000000
-
-
-
-;   Disable Windows Error Reporting
-
-    [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Windows Error Reporting]
-    "Disabled"=dword:00000001
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
-    "Disabled"=dword:00000001
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting]
-    "Disabled"=dword:00000001
-
-
-
-;   Enable Intelligent Active Hours
-;   https://www.tenforums.com/tutorials/121699-turn-off-automatically-adjust-active-hours-windows-10-a.html
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings]
-    "SmartActiveHoursState"=dword:00000001
-
-
-;   Disable Tablet Mode
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ImmersiveShell]
-    "TabletMode"=dword:00000000
-    "SignInMode"=dword:00000002
-
-
-
-;   Disable System Restore
-
-;   [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore]
-;   "DisableSR"=dword:1
-;   [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SR]
-;   "Start"=dword:4
-;   [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore]
-;   "DiskPercent"=dword:0
-;   "RPGlobalInterval"=dword:0
-;   "RPLifeInterval"=dword:0
-;   "RPSessionInterval"=dword:0
-;   "DisableConfig"=dword:1
-
-
-
-;   Windows Media Player Skip EULA + First Time usage dialog
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MediaPlayer\Preferences]
-    "AcceptedEULA"=dword:00000001
-    "FirstTime"=dword:00000001
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsMediaPlayer]
-    "GroupPrivacyAcceptance"=dword:00000001
-
-
-;   Enable Share Across Devices for Apps from My devices only
-;   https://www.tenforums.com/tutorials/70947-turn-off-share-across-devices-apps-window-10-a.html
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CDP]
-    "CdpSessionUserAuthzPolicy"=dword:00000001
-    "NearShareChannelUserAuthzPolicy"=dword:00000000
-    "RomeSdkChannelUserAuthzPolicy"=dword:00000001
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CDP\SettingsPage]
-    "RomeSdkChannelUserAuthzPolicy"=dword:00000001
-
-
-
-;   Remove-Windows-Defender-To-Folder-Context-Menu
-
-;   [-HKEY_CLASSES_ROOT\Folder\shell\WindowsDefender]
-;   [-HKEY_CLASSES_ROOT\Folder\shell\WindowsDefender\Command]
-
-
-
-;   To Set Feedback Frequency to Never
-;   https://www.tenforums.com/tutorials/2441-how-change-feedback-frequency-windows-10-a.html
-
-    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Siuf\Rules]
-    "NumberOfSIUFInPeriod"=dword:00000000
-    "PeriodInNanoSeconds"=-
-
-
-
-;   Disable Windows Feedback Notifications
-;   https://www.tenforums.com/tutorials/2441-how-change-feedback-frequency-windows-10-a.htm
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection]
-    "DoNotShowFeedbackNotifications"=dword:00000001
-
-
-
-;   Disable AutoPlay in Windows 10
-;   https://www.majorgeeks.com/content/page/turn_autoplay_on_or_off.html
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers]
-    "DisableAutoplay"=dword:00000001
-
-
-
-;   Show all icons in the Control Panel
-
-    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ControlPanel]
-    "AllItemsIconView"=dword:00000002
-    "StartupPage"=dword:00000001
-
-
-
-;   No startup delay for prorams
-
-    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Serialize]
-    "StartupDelayInMSec"=dword:00000000
-
-
-
-;   Disable most of Ads
-
-    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
-    "SystemPaneSuggestionsEnabled"=dword:00000000
-
-    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
-    "ShowSyncProviderNotifications"=dword:00000000
-
-    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
-    "SoftLandingEnabled"=dword:00000000
-
-    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
-    "RotatingLockScreenEnabled"=dword:00000000
-
-    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
-    "RotatingLockScreenOverlayEnabled"=dword:00000000
-
-
-
-;   Disable Aero Shake
-;   http://www.howtogeek.com/278996/how-to-disable-aero-shake-in-windows/
-
-    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
-    "DisallowShaking"=dword:00000001
-
-
-
-;   Status bar (bottom) in Explorer.
-
-    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
-    "ShowStatusBar"=dword:00000001
-
-
-
-;   Don't Replace Command Prompt with Windows PowerShell On the WinX Menu
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
-    "DontUsePowerShellOnWinX"=dword:00000001
-
-
-
-
-
-
-
-;   disable narrator
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Narrator\NoRoam]
-    "WinEnterLaunchEnabled"=dword:00000000
-
-
-
-;   disable accessibility options
-
-;   [HKEY_CURRENT_USER\Control Panel\Accessibility\ToggleKeys]
-;   "Flags"="58"
-
-;   [HKEY_CURRENT_USER\Control Panel\Accessibility\StickyKeys]
-;   "Flags"="506"
-
-
-
-;   Unnecessarily writing on SSD will shorten the lifetime
-;   https://translate.google.com/translate?hl=en&sl=ja&u=http://blog.livedoor.jp/nichepcgamer/archives/1071061265.html&prev=search
-;   80000000 (hex) = User Managed, Last Access Updates Enabled
-;   80000001 (hex) = User Managed, Last Access Updates Disabled
-;   80000002 (hex) = System Managed, Last Access Updates Enabled
-;   80000003 (hex) = System Managed, Last Access Updates Disabled
-
-    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem]
-    "NtfsDisableLastAccessUpdate"=dword:80000001
-
-
-
-;   Register and unregister dll and ocx files context menus
-
-    [HKEY_CLASSES_ROOT\dllfile\Shell]
-    [HKEY_CLASSES_ROOT\dllfile\Shell\Register]
-    [HKEY_CLASSES_ROOT\dllfile\Shell\Register\command]
-    [HKEY_CLASSES_ROOT\ocxfile\Shell]
-    [HKEY_CLASSES_ROOT\ocxfile\Shell\Register]
-    [HKEY_CLASSES_ROOT\ocxfile\Shell\Register\command]
-    @="regsvr32.exe \\\"%1\\\""
-    [HKEY_CLASSES_ROOT\dllfile\Shell\UnRegister]
-    [HKEY_CLASSES_ROOT\dllfile\Shell\UnRegister\command]
-    [HKEY_CLASSES_ROOT\ocxfile\Shell\UnRegister]
-    [HKEY_CLASSES_ROOT\ocxfile\Shell\UnRegister\command]
-    @="regsvr32.exe /u \\\"%1\\\""
-
-
-
-
-;   Enable Windows Explorer StatusBar
-
-    [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\Main]
-    "Show_StatusBar"="yes"
-    "StatusBarOther"=dword:00000001
-
-
-
-
-
-
-;   Office Telemetry/Disable data collection for Telemetry Agent
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Common]
-    "sendcustomerdata"=dword:00000000
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Common\Feedback]
-    "enabled"=dword:00000000
-    "includescreenshot"=dword:00000000
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\Options\Mail]
-    "EnableLogging"=dword:00000000
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Word\Options]
-    "EnableLogging"=dword:00000000
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Office\Common\ClientTelemetry]
-    "DisableTelemetry"=dword:00000001
-
-    [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\Common]
-    "qmenable"=dword:00000000
-    "updatereliabilitydata"=dword:00000000
-
-    [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\Common\General]
-    "shownfirstrunoptin"=dword:00000000
-    "skydrivesigninoption"=dword:00000000
-
-    [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\Common\ptwatson]
-    "ptwoptin"=dword:00000000
-
-    [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\Firstrun]
-    "disablemovie"=dword:00000001
-
-    [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\OSM]
-    "Enablelogging"=dword:00000000
-    "EnableUpload"=dword:00000000
-
-    [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\OSM\preventedapplications]
-    "accesssolution"=dword:00000001
-    "olksolution"=dword:00000001
-    "onenotesolution"=dword:00000001
-    "pptsolution"=dword:00000001
-    "projectsolution"=dword:00000001
-    "publishersolution"=dword:00000001
-    "visiosolution"=dword:00000001
-    "wdsolution"=dword:00000001
-    "xlsolution"=dword:00000001
-
-    [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\OSM\preventedsolutiontypes]
-    "agave"=dword:00000001
-    "appaddins"=dword:00000001
-    "comaddins"=dword:00000001
-    "documentfiles"=dword:00000001
-    "templatefiles"=dword:00000001
-
-
-
-;   Keep NUMLock always on
-
-    [HKEY_CURRENT_USER\Control Panel\Keyboard]
-    "InitialKeyboardIndicators"="2"
-
-
-
-;   Realtek high-pitch sound crackling fix
-
-    [HKEY_CURRENT_USER\Software\Realtek\Audio\RtkNGUI64\PowerMgnt]
-    "Enabled"=dword:00000001
-    "DelayTime"=dword:00000003
-    "OnlyBattery"=dword:00000000
-    "PowerState"=dword:00000000
-
-
-
-;   Speed up the Shell and the Desktop by increasing (lowering) some timeout's
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
-    "DesktopLivePreviewHoverTime"=dword:00000001
-
-    [HKEY_CURRENT_USER\Control Panel\Mouse]
-    "MouseHoverTime"="1"
-
-    [HKEY_CURRENT_USER\Control Panel\Desktop]
-    "MenuShowDelay"="1"
-
-    [HKEY_CURRENT_USER\Control Panel\Desktop]
-    "ActiveWndTrackTimeout"=dword:0000000a
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
-    "Start_ShowRun"=dword:00000001
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
-    "NoLowDiskSpaceChecks"=dword:00000001
-    "LinkResolveIgnoreLinkInfo"=dword:00000001
-    "NoResolveSearch"=dword:00000001
-    "NoResolveTrack"=dword:00000001
-    "NoInternetOpenWith"=dword:00000001
-
-    [HKEY_CURRENT_USER\Control Panel\Desktop]
-    "AutoEndTasks"="1"
-    "HungAppTimeout"="2000"
-    "MenuShowDelay"="0"
-    "WaitToKillAppTimeout"="2500"
-    "LowLevelHooksTimeout"="2000"
-
-    [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Control]
-    "WaitToKillServiceTimeout"="2000"
-
-    [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control]
-    "WaitToKillServiceTimeout"="2000"
-
-    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control]
-    "WaitToKillServiceTimeout"="2000"
-
-
-
-;   Disable Dump File creation on BSOD
-
-    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
-    "AutoReboot"=dword:00000001
-    "CrashDumpEnabled"=dword:00000000
-    "Overwrite"=dword:00000001
-    "LogEvent"=dword:00000001
-    "DumpFile"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,\
-    74,00,25,00,5c,00,4d,00,45,00,4d,00,4f,00,52,00,59,00,2e,00,44,00,4d,00,50,\
-    00,00,00
-    "MinidumpDir"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,\
-    00,74,00,25,00,5c,00,4d,00,69,00,6e,00,69,00,64,00,75,00,6d,00,70,00,00,00
-    "DumpFilters"=hex(7):64,00,75,00,6d,00,70,00,66,00,76,00,65,00,2e,00,73,00,79,\
-    00,73,00,00,00,00,00
-
-
-
-;   Disable Auto System Sounds Leveling (Reduce all other by 80% -> Do Nothing)
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Multimedia\Audio]
-    "UserDuckingPreference"=dword:00000003
-
-
-
-;   Disable Microsoft OneDrive
-
-;   [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]
-;   "DisableFileSyncNGSC"=dword:00000001
-
-
-
-;   Disable Cortana Win+C Keyboard Shortcut
-;   https://www.tenforums.com/tutorials/74284-turn-off-cortana-listen-keyboard-shortcut-windows-10-a.html
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
-    "VoiceShortcut"=dword:00000000
-
-
-
-;   Disable High Contrast Keyboard Shortcut
-;   https://www.tenforums.com/tutorials/103598-enable-disable-high-contrast-keyboard-shortcut-windows.html
-
-    [HKEY_CURRENT_USER\Control Panel\Accessibility\HighContrast]
-    "Flags"="4218"
-
-
-
-;   Disable AutoPlay
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
-    "NoDriveTypeAutoRun"=dword:000000ff
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
-    "NoDriveTypeAutoRun"=-
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
-    "NoAutoplayfornonVolume"=dword:00000001
-
-    [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
-    "NoAutoplayfornonVolume"=-
-
-
-
-;   Enable Confirmation of file deletion
-
-;   [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
-;   "ConfirmFileDelete"=dword:00000001
-
-
-
-
-;   Disable online tips and help for Settings app
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
-    "AllowOnlineTips"=dword:00000000
-
-
-
-;   Disable Activity history
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
-    "PublishUserActivities"=dword:00000000
-
-
-
-;   Hide Microsoft Edge button in IE
-
-    [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Internet Explorer\Main]
-    "HideNewEdgeButton"=dword:00000001
-
-
-
-;   Restore functionality of older Photo Viewer
-;   Change Extension's File Type
-
-;   [HKEY_CURRENT_USER\Software\Classes\.jpg]
-;   @="PhotoViewer.FileAssoc.Tiff"
-
-;   [HKEY_CURRENT_USER\Software\Classes\.jpeg]
-;   @="PhotoViewer.FileAssoc.Tiff"
-
-;   [HKEY_CURRENT_USER\Software\Classes\.gif]
-;   @="PhotoViewer.FileAssoc.Tiff"
-
-;   [HKEY_CURRENT_USER\Software\Classes\.png]
-;   @="PhotoViewer.FileAssoc.Tiff"
-
-;   [HKEY_CURRENT_USER\Software\Classes\.bmp]
-;   @="PhotoViewer.FileAssoc.Tiff"
-
-;   [HKEY_CURRENT_USER\Software\Classes\.tiff]
-;   @="PhotoViewer.FileAssoc.Tiff"
-
-;   [HKEY_CURRENT_USER\Software\Classes\.ico]
-;   @="PhotoViewer.FileAssoc.Tiff"
-
-
-
-;   Disable Internet Explorer Send Feedback Smiley Button
-;   https://www.tenforums.com/tutorials/56530-remove-internet-explorer-send-feedback-smiley-button.html
-
-    [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Internet Explorer\Restrictions]
-    "NoHelpItemSendFeedback"=dword:00000001
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Restrictions]
-    "NoHelpItemSendFeedback"=dword:00000001
-
-
-
-;   Fix Slow-Loading Windows Icons by Increasing the Icon Cache
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
-    "Max Cached Icons"="4096"
-
-
-
-;   FF to disable all IPv6 components, except the IPv6 loopback interface, which can't be deactivated.
-;   0x01  to disable IPv6 all tunnel interfaces. These include Intra-Site Automatic Tunnel Addressing Protocol (ISATAP), 6to4, and Teredo. If you have a IPv6 router, then you want to choose this one.
-
-    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters]
-    "DisabledComponents"=dword:000000ff
-
-
-
-;   Disable Malicious Software Removal Tool
-
-;   [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
-;   "DontOfferThroughWUAU"=dword:00000001
-
-
-
-;   Disable Malicious Software Reporting tool diagnostic data
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
-    "DontReportInfectionInformation"=dword:00000001
-
-
-
-;   Disable Windows Error Reporting current user
-
-    [HKEY_CURRENT_USER\Software\Microsoft\Windows\Windows Error Reporting]
-    "Disabled"=dword:00000001
-
-
-
-;   Disable Windows Store
-
-;   [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsStore]
-;   "RemoveWindowsStore"=dword:00000001
-
-
-
-;   NETWORK TWEAKS
+;       * NETWORK TWEAKS
 
         [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters]
         "SizReqBuf"=dword:0000ffff
@@ -1911,14 +1249,689 @@ Windows Registry Editor Version 5.00
 
 
 
-;       Enable Hardware Accelerated GPU Scheduling
+;       * Disable Network Throttling Index
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile]
+        "NetworkThrottlingIndex"=dword:ffffffff
+        "SystemResponsiveness"=dword:00000000
+
+
+
+;       * FF to disable all IPv6 components, except the IPv6 loopback interface, which can't be deactivated.
+;       * 0x01  to disable IPv6 all tunnel interfaces. These include Intra-Site Automatic Tunnel Addressing Protocol (ISATAP), 6to4, and Teredo. If you have a IPv6 router, then you want to choose this one.
+
+        [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters]
+        "DisabledComponents"=dword:000000ff
+
+
+
+;       * Disable Nagle's Algorithm (Find your {NIC-id} and apply Manually)
+
+;       HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{NIC-id}
+;       "TcpAckFrequency"=dword:00000001
+;       "TcpNoDelay"=dword:00000001
+;       "TcpDelAckTicks"=dword:00000000
+
+;   #######################################################
+
+
+
+
+
+;   #######################################################
+;   # MISCELLANY
+;   #######################################################
+
+;       * Prevent a touch by Windows tools (e.g., Beyond Compare) from changing EML file date and time to now.
+;       After this, run EML Atributer.exe to reset EML dates and times that have already been changed, if any.
+;       Undo (so that a touch does change EML time and date to the present moment) with:
+;       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\PropertySystem\PropertyHandlers\.eml]
+;       @="{5FA29220-36A1-40f9-89C6-F4B384B7642E}"
+
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\PropertySystem\PropertyHandlers\.eml]
+
+
+
+;       * Change Edge browser download folder
+;       Undo with "Default Download Directory"=-
+
+;       [HKEY_CURRENT_USER\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\Main]
+;       "Default Download Directory"="D:\Current"
+
+
+
+;       * When opening files with unknown extension, don't prompt to look for an app in the store
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+        "NoUseStoreOpenWith"=dword:00000001
+
+
+
+;       * Disable beep on error
+
+        [HKEY_CURRENT_USER\Control Panel\Sound]
+        "Beep"="No"
+
+
+
+;       * Overwrite paging file at shutdown for security
+;       Doesn't take too long if pagefile is small
+;       Overwriting is not reliable for wiping SSD, but it may help
+;       Undo with dword:00000000
+        [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
+        "ClearPageFileAtShutdown"=dword:00000001
+
+
+
+;       * Prevent system from storing recently opened files
+;       in C:\Users\Ray\AppData\Roaming\Microsoft\Windows\Recent
+;       Undo with dword:00000001
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "Start_TrackDocs"=dword:00000000
+
+
+
+;       * Disable Advanced Indexing Options
+;       https://www.majorgeeks.com/content/page/advanced_indexing_options.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+        "PreventUsingAdvancedIndexingOptions"=dword:00000001
+
+
+
+;       * Disable Advertising ID for Relevant Ads
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
+        "Enabled"=dword:00000000
+
+
+
+;       * Disable App Launch Tracking in Windows 10
+;       https://www.majorgeeks.com/content/page/how_to_disable_app_launch_tracking_in_windows_10.html
+
+        [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\EdgeUI]
+        "DisableMFUTracking"=dword:00000001
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EdgeUI]
+        "DisableMFUTracking"=dword:00000001
+
+
+
+;       * Disable Automatic Maintenance in Windows 10
+;       https://www.majorgeeks.com/content/page/how_to_disable_automatic_maintenance_in_windows_10.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]
+        "MaintenanceDisabled"=dword:00000001
+
+
+
+;       * Disable Featured or Suggested Apps from Automatically Installing
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+        "SilentInstalledAppsEnabled"=dword:00000000
+
+
+
+;       * Disable Get Even More Out Of Windows Screen & Welcome Experience Page
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+        "SubscribedContent-310093Enabled"=dword:00000000
+
+
+
+;       * Disable Pre-launch Microsoft Edge
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]
+        "AllowPrelaunch"=dword:00000000
+
+
+
+;       * Disable JPEG Desktop Wallpaper Import Quality Reduction
+
+        [HKEY_CURRENT_USER\Control Panel\Desktop]
+        "JPEGImportQuality"=dword:00000100
+
+
+
+;       * Enable AutoEndTasks at Shut Down, Restart, or Sign Out
+;       https://www.majorgeeks.com/content/page/how_to_disable_autoendtasks_at_shut_downrestartor_sign_out.html
+
+        [HKEY_CURRENT_USER\Control Panel\Desktop]
+        "AutoEndTasks"="1"
+
+        [HKEY_USERS\.DEFAULT\Control Panel\Desktop]
+        "AutoEndTasks"="1"
+
+
+
+;       * Enable Clipboard History
+;       https://www.tenforums.com/tutorials/110039-enable-disable-clipboard-history-windows-10-a.html#option1
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+        "AllowClipboardHistory"=-
+
+
+
+;       * Disable Animate windows when minimizing and maximizing
+
+        [HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics]
+        "MinAnimate"="0"
+
+
+
+;       * Enable Fast Startup
+;       https://www.majorgeeks.com/content/page/how_to_turn_fast_startup_on_or_off_in_windows_10.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+        "HiberbootEnabled"=dword:00000001
+
+
+
+;       * Show Full Details When Deleting a File
+;       https://www.majorgeeks.com/content/page/show_full_details_when_deleting_a_file.html
+
+        [HKEY_CLASSES_ROOT\AllFilesystemObjects]
+        "ConflictPrompt"="prop:System.ItemTypeText;System.Size;System.DateModified;System.DateCreated"
+        "ExtendedTileInfo"="prop:System.ItemTypeText;System.Size;System.DateModified;System.OfflineAvailability"
+        "FullDetails"="prop:System.PropGroup.FileSystem;System.ItemNameDisplay;System.ItemTypeText;System.ItemFolderPathDisplay;System.Size;System.DateCreated;System.DateModified;System.FileAttributes;*System.StorageProviderState;*System.OfflineAvailability;*System.OfflineStatus;*System.SharedWith;*System.FileOwner;*System.ComputerName"
+        "InfoTip"="prop:System.ItemTypeText;System.Size;System.DateModified"
+        "NoRecentDocs"=""
+        "NoStaticDefaultVerb"=""
+        "PreviewDetails"="prop:System.DateModified;System.Size;System.DateCreated;*System.StorageProviderState;*System.OfflineAvailability;*System.OfflineStatus;*System.SharedWith"
+        "PreviewTitle"="prop:System.ItemNameDisplay;System.ItemTypeText"
+        "QuickTip"="prop:System.ItemTypeText;System.Size;System.DateModified"
+        "SetDefaultsFor"="prop:System.Author;System.Document.DateCreated"
+        "TileInfo"="prop:System.ItemTypeText;System.Size;System.DateModified"
+        "FileOperationPrompt"="prop:System.PropGroup.FileSystem;System.ItemNameDisplay;System.ItemTypeText;System.ItemFolderPathDisplay;System.Size;System.DateCreated;System.DateModified;System.FileAttributes;System.OfflineAvailability;System.OfflineStatus;System.SharedWith;System.FileOwner;System.ComputerName"
+
+
+
+;       * Disable Find My Device in Windows 10
+;       https://www.majorgeeks.com/content/page/how_to_turn_on_or_off_find_my_device_in_windows_10.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Settings\FindMyDevice]
+        "LocationSyncEnabled"=dword:00000000
+
+
+
+;       * Enable Game Mode
+;       https://www.tenforums.com/tutorials/75936-turn-off-game-mode-windows-10-a.html#option2
+
+        [HKEY_CURRENT_USER\Software\Microsoft\GameBar]
+        "AllowAutoGameMode"=dword:00000001
+        "AutoGameModeEnabled"=dword:00000001
+
+
+
+;       * Disable Game Bar in Windows 10
+;       https://www.majorgeeks.com/content/page/how_to_turn_on_or_off_xbox_game_bar_in_windows_10.html
+
+        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR]
+        "AppCaptureEnabled"=dword:00000000
+
+        [HKEY_CURRENT_USER\System\GameConfigStore]
+        "GameDVR_Enabled"=dword:00000000
+
+
+
+;       * Disable Windows Error Reporting
+
+        [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Windows Error Reporting]
+        "Disabled"=dword:00000001
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
+        "Disabled"=dword:00000001
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting]
+        "Disabled"=dword:00000001
+
+
+
+;       * Enable Intelligent Active Hours
+;       https://www.tenforums.com/tutorials/121699-turn-off-automatically-adjust-active-hours-windows-10-a.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings]
+        "SmartActiveHoursState"=dword:00000001
+
+
+;       * Disable Tablet Mode
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ImmersiveShell]
+        "TabletMode"=dword:00000000
+        "SignInMode"=dword:00000002
+
+
+
+;       * Disable System Restore
+
+;       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore]
+;       "DisableSR"=dword:1
+
+;       [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SR]
+;       "Start"=dword:4
+
+;       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore]
+;       "DiskPercent"=dword:0
+;       "RPGlobalInterval"=dword:0
+;       "RPLifeInterval"=dword:0
+;       "RPSessionInterval"=dword:0
+;       "DisableConfig"=dword:1
+
+
+
+;       * Windows Media Player Skip EULA + First Time usage dialog
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MediaPlayer\Preferences]
+        "AcceptedEULA"=dword:00000001
+        "FirstTime"=dword:00000001
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsMediaPlayer]
+        "GroupPrivacyAcceptance"=dword:00000001
+
+
+;       * Enable Share Across Devices for Apps from My devices only
+;       https://www.tenforums.com/tutorials/70947-turn-off-share-across-devices-apps-window-10-a.html
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CDP]
+        "CdpSessionUserAuthzPolicy"=dword:00000001
+        "NearShareChannelUserAuthzPolicy"=dword:00000000
+        "RomeSdkChannelUserAuthzPolicy"=dword:00000001
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CDP\SettingsPage]
+        "RomeSdkChannelUserAuthzPolicy"=dword:00000001
+
+
+
+;       * To Set Feedback Frequency to Never
+;       https://www.tenforums.com/tutorials/2441-how-change-feedback-frequency-windows-10-a.html
+
+        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Siuf\Rules]
+        "NumberOfSIUFInPeriod"=dword:00000000
+        "PeriodInNanoSeconds"=-
+
+
+
+;       * Disable Windows Feedback Notifications
+;       https://www.tenforums.com/tutorials/2441-how-change-feedback-frequency-windows-10-a.htm
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection]
+        "DoNotShowFeedbackNotifications"=dword:00000001
+
+
+
+;       * Disable AutoPlay in Windows 10
+;       https://www.majorgeeks.com/content/page/turn_autoplay_on_or_off.html
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers]
+        "DisableAutoplay"=dword:00000001
+
+
+
+;       * Show all icons in the Control Panel
+
+        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ControlPanel]
+        "AllItemsIconView"=dword:00000002
+        "StartupPage"=dword:00000001
+
+
+
+;       * No startup delay for prorams
+
+        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Serialize]
+        "StartupDelayInMSec"=dword:00000000
+
+
+
+;       * Disable most of Ads
+
+        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+        "SystemPaneSuggestionsEnabled"=dword:00000000
+
+        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "ShowSyncProviderNotifications"=dword:00000000
+
+        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+        "SoftLandingEnabled"=dword:00000000
+
+        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+        "RotatingLockScreenEnabled"=dword:00000000
+
+        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+        "RotatingLockScreenOverlayEnabled"=dword:00000000
+
+
+
+;       * Disable Aero Shake
+;       http://www.howtogeek.com/278996/how-to-disable-aero-shake-in-windows/
+
+        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "DisallowShaking"=dword:00000001
+
+
+
+;       * Status bar (bottom) in Explorer.
+
+        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "ShowStatusBar"=dword:00000001
+
+
+
+;       * Don't Replace Command Prompt with Windows PowerShell On the Win+X Menu
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "DontUsePowerShellOnWinX"=dword:00000001
+
+
+
+;       * disable narrator
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Narrator\NoRoam]
+        "WinEnterLaunchEnabled"=dword:00000000
+
+
+
+;       * Unnecessarily writing on SSD will shorten the lifetime
+;       https://translate.google.com/translate?hl=en&sl=ja&u=http://blog.livedoor.jp/nichepcgamer/archives/1071061265.html&prev=search
+;       80000000 (hex) = User Managed, Last Access Updates Enabled
+;       80000001 (hex) = User Managed, Last Access Updates Disabled
+;       80000002 (hex) = System Managed, Last Access Updates Enabled
+;       80000003 (hex) = System Managed, Last Access Updates Disabled
+
+        [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem]
+        "NtfsDisableLastAccessUpdate"=dword:80000001
+
+
+
+;       * Register and unregister dll and ocx files context menus
+
+        [HKEY_CLASSES_ROOT\dllfile\Shell]
+        [HKEY_CLASSES_ROOT\dllfile\Shell\Register]
+        [HKEY_CLASSES_ROOT\dllfile\Shell\Register\command]
+        [HKEY_CLASSES_ROOT\ocxfile\Shell]
+        [HKEY_CLASSES_ROOT\ocxfile\Shell\Register]
+        [HKEY_CLASSES_ROOT\ocxfile\Shell\Register\command]
+        @="regsvr32.exe \\\"%1\\\""
+        [HKEY_CLASSES_ROOT\dllfile\Shell\UnRegister]
+        [HKEY_CLASSES_ROOT\dllfile\Shell\UnRegister\command]
+        [HKEY_CLASSES_ROOT\ocxfile\Shell\UnRegister]
+        [HKEY_CLASSES_ROOT\ocxfile\Shell\UnRegister\command]
+        @="regsvr32.exe /u \\\"%1\\\""
+
+
+
+;       * Enable Windows Explorer StatusBar
+
+        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\Main]
+        "Show_StatusBar"="yes"
+        "StatusBarOther"=dword:00000001
+
+
+
+;       * Office Telemetry/Disable data collection for Telemetry Agent
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Common]
+        "sendcustomerdata"=dword:00000000
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Common\Feedback]
+        "enabled"=dword:00000000
+        "includescreenshot"=dword:00000000
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\Options\Mail]
+        "EnableLogging"=dword:00000000
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Word\Options]
+        "EnableLogging"=dword:00000000
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Office\Common\ClientTelemetry]
+        "DisableTelemetry"=dword:00000001
+
+        [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\Common]
+        "qmenable"=dword:00000000
+        "updatereliabilitydata"=dword:00000000
+
+        [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\Common\General]
+        "shownfirstrunoptin"=dword:00000000
+        "skydrivesigninoption"=dword:00000000
+
+        [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\Common\ptwatson]
+        "ptwoptin"=dword:00000000
+
+        [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\Firstrun]
+        "disablemovie"=dword:00000001
+
+        [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\OSM]
+        "Enablelogging"=dword:00000000
+        "EnableUpload"=dword:00000000
+
+        [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\OSM\preventedapplications]
+        "accesssolution"=dword:00000001
+        "olksolution"=dword:00000001
+        "onenotesolution"=dword:00000001
+        "pptsolution"=dword:00000001
+        "projectsolution"=dword:00000001
+        "publishersolution"=dword:00000001
+        "visiosolution"=dword:00000001
+        "wdsolution"=dword:00000001
+        "xlsolution"=dword:00000001
+
+        [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\OSM\preventedsolutiontypes]
+        "agave"=dword:00000001
+        "appaddins"=dword:00000001
+        "comaddins"=dword:00000001
+        "documentfiles"=dword:00000001
+        "templatefiles"=dword:00000001
+
+
+
+;       * Realtek high-pitch sound crackling fix
+
+        [HKEY_CURRENT_USER\Software\Realtek\Audio\RtkNGUI64\PowerMgnt]
+        "Enabled"=dword:00000001
+        "DelayTime"=dword:00000003
+        "OnlyBattery"=dword:00000000
+        "PowerState"=dword:00000000
+
+
+
+;       * Speed up the Shell and the Desktop by increasing (lowering) some timeout's
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "DesktopLivePreviewHoverTime"=dword:00000001
+
+        [HKEY_CURRENT_USER\Control Panel\Mouse]
+        "MouseHoverTime"="1"
+
+        [HKEY_CURRENT_USER\Control Panel\Desktop]
+        "MenuShowDelay"="1"
+
+        [HKEY_CURRENT_USER\Control Panel\Desktop]
+        "ActiveWndTrackTimeout"=dword:0000000a
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "Start_ShowRun"=dword:00000001
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+        "NoLowDiskSpaceChecks"=dword:00000001
+        "LinkResolveIgnoreLinkInfo"=dword:00000001
+        "NoResolveSearch"=dword:00000001
+        "NoResolveTrack"=dword:00000001
+        "NoInternetOpenWith"=dword:00000001
+
+        [HKEY_CURRENT_USER\Control Panel\Desktop]
+        "AutoEndTasks"="1"
+        "HungAppTimeout"="2000"
+        "MenuShowDelay"="0"
+        "WaitToKillAppTimeout"="2500"
+        "LowLevelHooksTimeout"="2000"
+
+        [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Control]
+        "WaitToKillServiceTimeout"="2000"
+
+        [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control]
+        "WaitToKillServiceTimeout"="2000"
+
+        [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control]
+        "WaitToKillServiceTimeout"="2000"
+
+
+
+;       * Disable Dump File creation on BSOD
+
+        [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
+        "AutoReboot"=dword:00000001
+        "CrashDumpEnabled"=dword:00000000
+        "Overwrite"=dword:00000001
+        "LogEvent"=dword:00000001
+        "DumpFile"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,\
+        74,00,25,00,5c,00,4d,00,45,00,4d,00,4f,00,52,00,59,00,2e,00,44,00,4d,00,50,\
+        00,00,00
+        "MinidumpDir"=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,\
+        00,74,00,25,00,5c,00,4d,00,69,00,6e,00,69,00,64,00,75,00,6d,00,70,00,00,00
+        "DumpFilters"=hex(7):64,00,75,00,6d,00,70,00,66,00,76,00,65,00,2e,00,73,00,79,\
+        00,73,00,00,00,00,00
+
+
+
+;       * Disable Auto System Sounds Leveling (Reduce all other by 80% -> Do Nothing)
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Multimedia\Audio]
+        "UserDuckingPreference"=dword:00000003
+
+
+
+;       * Disable Microsoft OneDrive
+
+;       [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]
+;       "DisableFileSyncNGSC"=dword:00000001
+
+
+
+;       * Disable AutoPlay
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+        "NoDriveTypeAutoRun"=dword:000000ff
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+        "NoDriveTypeAutoRun"=-
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+        "NoAutoplayfornonVolume"=dword:00000001
+
+        [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
+        "NoAutoplayfornonVolume"=-
+
+
+
+;       * Enable Confirmation of file deletion
+
+;       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+;       "ConfirmFileDelete"=dword:00000001
+
+
+
+
+;       * Disable online tips and help for Settings app
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+        "AllowOnlineTips"=dword:00000000
+
+
+
+;       * Disable Activity history
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+        "PublishUserActivities"=dword:00000000
+
+
+
+;       * Hide Microsoft Edge button in IE
+
+        [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Internet Explorer\Main]
+        "HideNewEdgeButton"=dword:00000001
+
+
+
+;       * Restore functionality of older Photo Viewer
+;       Change Extension's File Type
+
+;       [HKEY_CURRENT_USER\Software\Classes\.jpg]
+;       @="PhotoViewer.FileAssoc.Tiff"
+
+;       [HKEY_CURRENT_USER\Software\Classes\.jpeg]
+;       @="PhotoViewer.FileAssoc.Tiff"
+
+;       [HKEY_CURRENT_USER\Software\Classes\.gif]
+;       @="PhotoViewer.FileAssoc.Tiff"
+
+;       [HKEY_CURRENT_USER\Software\Classes\.png]
+;       @="PhotoViewer.FileAssoc.Tiff"
+
+;       [HKEY_CURRENT_USER\Software\Classes\.bmp]
+;       @="PhotoViewer.FileAssoc.Tiff"
+
+;       [HKEY_CURRENT_USER\Software\Classes\.tiff]
+;       @="PhotoViewer.FileAssoc.Tiff"
+
+;       [HKEY_CURRENT_USER\Software\Classes\.ico]
+;       @="PhotoViewer.FileAssoc.Tiff"
+
+
+
+;       * Disable Internet Explorer Send Feedback Smiley Button
+;       https://www.tenforums.com/tutorials/56530-remove-internet-explorer-send-feedback-smiley-button.html
+
+        [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Internet Explorer\Restrictions]
+        "NoHelpItemSendFeedback"=dword:00000001
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Restrictions]
+        "NoHelpItemSendFeedback"=dword:00000001
+
+
+
+;       * Fix Slow-Loading Windows Icons by Increasing the Icon Cache to 4MB
+;       https://www.tenforums.com/tutorials/125988-change-icon-cache-size-windows.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+        "Max Cached Icons"="4096"
+
+
+
+;       * Disable Malicious Software Removal Tool
+
+;       [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
+;       "DontOfferThroughWUAU"=dword:00000001
+
+
+
+;       * Disable Malicious Software Reporting tool diagnostic data
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
+        "DontReportInfectionInformation"=dword:00000001
+
+
+
+;       * Disable Windows Error Reporting current user
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\Windows Error Reporting]
+        "Disabled"=dword:00000001
+
+
+
+;       * Disable Windows Store
+
+;       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsStore]
+;       "RemoveWindowsStore"=dword:00000001
+
+
+
+;       * Enable Hardware Accelerated GPU Scheduling
 
         [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers]
         "HwSchMode"=dword:00000002
 
 
 
-;       Unlimit reservable bandwidth
+;       * Unlimit reservable bandwidth
 
         [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Psched]
         "NonBestEffortLimit"=dword:00000000
@@ -1931,32 +1944,17 @@ Windows Registry Editor Version 5.00
 
 
 
-;       Disable Nagle's Algorithm (Apply Manually)
-
-;       HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{NIC-id}
-;       "TcpAckFrequency"=dword:00000001
-;       "TcpNoDelay"=dword:00000001
-;       "TcpDelAckTicks"=dword:00000000
-
-
-
-;       Disable Network Throttling Index
-
-        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile]
-        "NetworkThrottlingIndex"=dword:ffffffff
-        "SystemResponsiveness"=dword:00000000
-
-
-
-;       Disable Administrative Shares from Windows Server
+;       * Disable Administrative Shares from Windows Server
 
 ;       [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lanmanserver\parameters]
 ;       “AutoShareServer”=dword:00000000
 
 
 
-;   Enable Command Prompt Autocomplete
+;       * Enable Command Prompt Autocomplete
 
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Command Processor]
-    "CompletionChar"=dword:00000009
-    "PathCompletionChar"=dword:00000009
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Command Processor]
+        "CompletionChar"=dword:00000009
+        "PathCompletionChar"=dword:00000009
+
+;   #######################################################
