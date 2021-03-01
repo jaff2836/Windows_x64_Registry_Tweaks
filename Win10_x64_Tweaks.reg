@@ -1250,6 +1250,13 @@
 
 
 
+;       Change Delay Time to Show Taskbar Thumbnails in Windows 10
+;       https://www.tenforums.com/tutorials/21005-change-delay-time-show-taskbar-thumbnails-windows-10-a.html
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "ExtendedUIHoverTime"=dword:00000001
+
+
+
 ;       * Disable small icons
 
         [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
@@ -1257,17 +1264,18 @@
 
 
 
-;       * Never Combine buttons
+;       * Never Combine buttons on Main Taskbar
 
         [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
         "TaskbarGlomLevel"=dword:00000002
 
 
 
-;       * Show Other Taskbars and Never Combine
+;       * Show Other Taskbars and Never Combine on Other Taskbars
 
         [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
         "MMTaskbarEnabled"=dword:00000001
+        "MMTaskbarMode"=dword:00000000
         "MMTaskbarGlomLevel"=dword:00000002
 
 
@@ -1820,7 +1828,6 @@
 ;       Created by: Shawn Brink
 ;       Created on: December 30, 2020
 ;       https://www.tenforums.com/tutorials/159556-turn-off-check-spelling-languages-microsoft-edge-chromium.html
-
 
         [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge]
         "SpellcheckEnabled"=dword:00000000
