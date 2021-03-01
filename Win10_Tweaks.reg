@@ -1,19 +1,15 @@
     Windows Registry Editor Version 5.00
 
 
-;   This is the List of Registry Tweaks by Jaff2836.
+;   This is the Collection of Registry Tweaks by Jaff2836.
 ;   You can manually add/remove comment to use or not use the tweaks.
 
-;   This is currently work in progress.
+;   This code is currently work in progress.
+;   However, you can currently use the registry.
 
-;   Thanks to TenForums, MajorGeeks, and Ray Woodcock.
-
-
-
+;   All registry codes are in TenForums, MajorGeeks, and Ray Woodcock.
 
 
-;   Created with Winaero Tweaker 0.18.0.0
-;   https://winaero.com
 
 
 
@@ -34,10 +30,13 @@
 ;   #######################################################
 
 ;       * Remove Folders From This PC
+;       Created by: Shawn Brink
+;       Created on: October 22nd 2017
+;       https://www.tenforums.com/tutorials/6015-add-remove-folders-pc-windows-10-a.html
 
 ;       3D Objects
-;       [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}]
-;       [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}]
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}]
+        [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}]
 
 ;       Desktop
 ;       [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}]
@@ -113,6 +112,17 @@
             [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
             "HubMode"=dword:00000001
 
+
+
+;           > Remove Linux(WSL) Distro's
+;           Created by: Shawn Brink
+;           Created on: February 19th 2019
+;           https://www.tenforums.com/tutorials/127506-add-remove-linux-navigation-pane-windows-10-a.html
+
+            [HKEY_CURRENT_USER\Software\Classes\CLSID\{B2B4A4D1-2754-4140-A2EB-9A76D9D7CDC6}]
+            @="Linux"
+            "System.IsPinnedToNameSpaceTree"=dword:00000000
+
 ;       ***************************************************
 
 
@@ -150,7 +160,8 @@
 
 
 ;       * Enable Thumbnail Previews in File Explorer
-;       https://www.majorgeeks.com/content/page/how_to_disable_or_enable_thumbnail_previews_in_file_explorer.html
+;       Created by: Shawn Brink
+;       https://www.tenforums.com/tutorials/18834-enable-disable-thumbnail-previews-file-explorer-windows-10-a.html
 
         [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
         "DisableThumbnails"=-
@@ -172,6 +183,26 @@
         [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
         "LaunchTo"=dword:00000001
 
+
+
+;       * Increase Folder View Settings Cache Memory Size
+;       Created by: Shawn Brink
+;       Created on: December 9, 2020
+;       https://www.windowsq.com/t/how-to-increase-folder-view-settings-cache-memory-size-in-windows.471/
+
+        [HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell]
+        "BagMRU Size"=dword:00004e20
+
+
+
+;       * Change Icon Cache Size using a REG file
+;       Created by: Shawn Brink
+;       Created on: January 25th 2019
+;       https://www.tenforums.com/tutorials/125988-change-icon-cache-size-windows.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+        "Max Cached Icons"="4096"
+
 ;   #######################################################
 
 
@@ -183,7 +214,8 @@
 ;   #######################################################
 
 ;       * Remove "Pin to Quick Access"
-;       http://www.tenforums.com/tutorials/2933-pin-quick-access-context-menu-remove-windows-10-a.html
+;       Created by: Shawn Brink
+;       https://www.tenforums.com/tutorials/2933-add-remove-pin-quick-access-context-menu-windows-10-a.html
 
         [-HKEY_CLASSES_ROOT\Folder\shell\pintohome]
 
@@ -192,6 +224,8 @@
 
 
 ;       * Remove "Restore Previous Versions"
+;       Created by: Shawn Brink
+;       Created on: March 16th 2017
 ;       https://www.tenforums.com/tutorials/79513-remove-previous-versions-context-menu-properties-windows-10-a.html
 
 ;       Removed from Properties tab
@@ -203,6 +237,7 @@
 
         [-HKEY_CLASSES_ROOT\Drive\shellex\PropertySheetHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}]
 
+
 ;       Remove from context menu
         [-HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}]
 
@@ -211,6 +246,7 @@
         [-HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}]
 
         [-HKEY_CLASSES_ROOT\Drive\shellex\ContextMenuHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}]
+
 
 ;       To clear any policies
         [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
@@ -230,15 +266,80 @@
 
 
 
-;       * Remove "Scan with Microsoft Defender" from Context Menu
+;       * Remove "Scan with Microsoft Defender"
+;       Created by: Shawn Brink
+;       Created on: August 21st 2015
+;       Updated on: July 6, 2020
+;       https://www.tenforums.com/tutorials/18145-add-remove-scan-microsoft-defender-context-menu-windows-10-a.html
 
-;       [-HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\EPP]
+        [-HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\EPP]
 
-;       [-HKEY_CLASSES_ROOT\CLSID\{09A47860-11B0-4DA5-AFA5-26D86198A780}]
+        [-HKEY_CLASSES_ROOT\CLSID\{09A47860-11B0-4DA5-AFA5-26D86198A780}]
 
-;       [-HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\EPP]
+        [-HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\EPP]
 
-;       [-HKEY_CLASSES_ROOT\Drive\shellex\ContextMenuHandlers\EPP]
+        [-HKEY_CLASSES_ROOT\Drive\shellex\ContextMenuHandlers\EPP]
+
+
+
+;       * Add Microsoft Defender Antivirus
+;       Created by: Shawn Brink
+;       Created on: January 28, 2015
+;       Updated on: July 6, 2020
+;       https://www.tenforums.com/tutorials/6120-add-remove-microsoft-defender-antivirus-context-menu-windows-10-a.html
+
+;       [-HKEY_CLASSES_ROOT\DesktopBackground\Shell\WindowsDefender]
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\WindowsDefender]
+;       "Icon"="%ProgramFiles%\\Windows Defender\\EppManifest.dll,-101"
+;       "MUIVerb"="Microsoft Defender Antivirus"
+;       "Position"="Bottom"
+;       "SubCommands"=""
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\WindowsDefender\shell\001flyout]
+;       "Icon"="%ProgramFiles%\\Windows Defender\\EppManifest.dll,-101"
+;       "MUIVerb"="Windows Security"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\WindowsDefender\shell\001flyout\command]
+;       @="explorer windowsdefender:"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\WindowsDefender\shell\002flyout]
+;       "Icon"="%ProgramFiles%\\Windows Defender\\EppManifest.dll,-101"
+;       "MUIVerb"="Windows Security in Settings"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\WindowsDefender\shell\002flyout\command]
+;       @="explorer ms-settings:windowsdefender"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\WindowsDefender\shell\003flyout]
+;       "CommandFlags"=dword:00000020
+;       "Icon"="%ProgramFiles%\\Windows Defender\\EppManifest.dll,-101"
+;       "MUIVerb"="Update"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\WindowsDefender\shell\003flyout\command]
+;       @="\"C:\\Program Files\\Windows Defender\\MpCmdRun.exe\" -SignatureUpdate"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\WindowsDefender\shell\004flyout]
+;       "Icon"="%ProgramFiles%\\Windows Defender\\EppManifest.dll,-101"
+;       "MUIVerb"="Quick Scan"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\WindowsDefender\shell\004flyout\command]
+;       @="\"C:\\Program Files\\Windows Defender\\MpCmdRun.exe\" -Scan -ScanType 1"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\WindowsDefender\shell\005flyout]
+;       "Icon"="%ProgramFiles%\\Windows Defender\\EppManifest.dll,-101"
+;       "MUIVerb"="Full Scan"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\WindowsDefender\shell\005flyout\command]
+;       @="\"C:\\Program Files\\Windows Defender\\MpCmdRun.exe\" -Scan -ScanType 2"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\WindowsDefender\shell\006flyout]
+;       "CommandFlags"=dword:00000020
+;       "HasLUAShield"=""
+;       "Icon"="%ProgramFiles%\\Windows Defender\\EppManifest.dll,-101"
+;       "MUIVerb"="Offline Scan"
+
+;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\WindowsDefender\shell\006flyout\command]
+;       @="PowerShell.exe Start-Process PowerShell -Verb RunAs Start-MpWDOScan"
 
 
 
@@ -454,7 +555,9 @@
 
 
 ;       * Remove Drives in "Send to" Context Menu for All Users
-;       http://www.tenforums.com/tutorials/69524-send-context-menu-add-remove-drives-windows-10-a.html
+;       Created by: Shawn Brink
+;       Created on: November 10th 2016
+;       https://www.tenforums.com/tutorials/69524-add-remove-drives-send-context-menu-windows-10-a.html
 
         [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
         "NoDrivesInSendToMenu"=dword:00000001
@@ -470,11 +573,15 @@
         @="cmd /c dir \"%1\" /a:-d /o:n | clip"
 
 ;       Alternative: copy only simple names, no details
+
 ;       [HKEY_CLASSES_ROOT\Directory\shell\copylist]
 ;       @="Copy File List to Clipboard"
+
 ;       [HKEY_CLASSES_ROOT\Directory\shell\copylist\command]
 ;       @="cmd /c dir \"%1\" /b /a:-d /o:n | clip"
+
 ;       Undo with:
+
 ;       [-HKEY_CLASSES_ROOT\Directory\shell\copylist]
 
 
@@ -498,48 +605,131 @@
 
 
 
-;       * Add Shift + Right Click "Open command window here as administrator"
-;       https://www.majorgeeks.com/content/page/how_to_add_open_command_window_here_context_menu.html
+;       * Add Shift + Right Click "Open Command Prompt (and Administrator) Here"
+;       Created by: Shawn Brink
+;       Created on: December 21, 2020
+;       https://www.tenforums.com/tutorials/158472-add-remove-command-prompt-open-here-context-menu-windows-10-a.html
 
-        [HKEY_CLASSES_ROOT\Directory\shell\OpenCmdHereAsAdmin]
-        @="Open command window here as administrator"
+        [HKEY_CLASSES_ROOT\DesktopBackground\shell\CommandPrompt]
+        "Icon"="imageres.dll,-5323"
+        "MUIVerb"="Command Prompt"
         "Extended"=""
+        "SubCommands"=""
+
+        [HKEY_CLASSES_ROOT\DesktopBackground\shell\CommandPrompt\shell\cmd1]
+        @="@shell32.dll,-8506"
+        "MUIVerb"="Open Here"
+        "Icon"="imageres.dll,-5323"
+        "NoWorkingDirectory"=""
+
+        [HKEY_CLASSES_ROOT\DesktopBackground\shell\CommandPrompt\shell\cmd1\command]
+        @="cmd.exe /s /k pushd \"%V\""
+
+        [HKEY_CLASSES_ROOT\DesktopBackground\shell\CommandPrompt\shell\cmd2]
+        @="Open Here as Administrator"
+        "HasLUAShield"=""
         "Icon"="imageres.dll,-5324"
 
-        [HKEY_CLASSES_ROOT\Directory\shell\OpenCmdHereAsAdmin\command]
-        @="cmd /c echo|set/p=\"%L\"|powershell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
-
-        [HKEY_CLASSES_ROOT\Directory\Background\shell\OpenCmdHereAsAdmin]
-        @="Open command window here as administrator"
-        "Extended"=""
-        "Icon"="imageres.dll,-5324"
-
-        [HKEY_CLASSES_ROOT\Directory\Background\shell\OpenCmdHereAsAdmin\command]
+        [HKEY_CLASSES_ROOT\DesktopBackground\shell\CommandPrompt\shell\cmd2\command]
         @="cmd /c echo|set/p=\"%V\"|powershell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
 
-        [HKEY_CLASSES_ROOT\Drive\shell\OpenCmdHereAsAdmin]
-        @="Open command window here as administrator"
+        [HKEY_CLASSES_ROOT\Directory\shell\CommandPrompt]
+        "Icon"="imageres.dll,-5323"
+        "MUIVerb"="Command Prompt"
         "Extended"=""
+        "SubCommands"=""
+
+        [HKEY_CLASSES_ROOT\Directory\shell\CommandPrompt\shell\cmd1]
+        @="@shell32.dll,-8506"
+        "MUIVerb"="Open Here"
+        "Icon"="imageres.dll,-5323"
+        "NoWorkingDirectory"=""
+
+        [HKEY_CLASSES_ROOT\Directory\shell\CommandPrompt\shell\cmd1\command]
+        @="cmd.exe /s /k pushd \"%V\""
+
+        [HKEY_CLASSES_ROOT\Directory\shell\CommandPrompt\shell\cmd2]
+        @="Open Here as Administrator"
+        "HasLUAShield"=""
         "Icon"="imageres.dll,-5324"
 
-        [HKEY_CLASSES_ROOT\Drive\shell\OpenCmdHereAsAdmin\command]
+        [HKEY_CLASSES_ROOT\Directory\shell\CommandPrompt\shell\cmd2\command]
         @="cmd /c echo|set/p=\"%L\"|powershell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
 
-        [HKEY_CLASSES_ROOT\LibraryFolder\background\shell\OpenCmdHereAsAdmin]
-        @="Open command window here as administrator"
+        [HKEY_CLASSES_ROOT\Directory\Background\shell\CommandPrompt]
+        "Icon"="imageres.dll,-5323"
+        "MUIVerb"="Command Prompt"
         "Extended"=""
+        "SubCommands"=""
+
+        [HKEY_CLASSES_ROOT\Directory\Background\shell\CommandPrompt\shell\cmd1]
+        @="@shell32.dll,-8506"
+        "MUIVerb"="Open Here"
+        "Icon"="imageres.dll,-5323"
+        "NoWorkingDirectory"=""
+
+        [HKEY_CLASSES_ROOT\Directory\Background\shell\CommandPrompt\shell\cmd1\command]
+        @="cmd.exe /s /k pushd \"%V\""
+
+        [HKEY_CLASSES_ROOT\Directory\Background\shell\CommandPrompt\shell\cmd2]
+        @="Open Here as Administrator"
+        "HasLUAShield"=""
         "Icon"="imageres.dll,-5324"
 
-        [HKEY_CLASSES_ROOT\LibraryFolder\background\shell\OpenCmdHereAsAdmin\command]
+        [HKEY_CLASSES_ROOT\Directory\Background\shell\CommandPrompt\shell\cmd2\command]
         @="cmd /c echo|set/p=\"%V\"|powershell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
 
-;       To allow mapped drives to be available in command prompt
-        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
-        "EnableLinkedConnections"=dword:00000001
+        [HKEY_CLASSES_ROOT\Drive\shell\CommandPrompt]
+        "Icon"="imageres.dll,-5323"
+        "MUIVerb"="Command Prompt"
+        "Extended"=""
+        "SubCommands"=""
+
+        [HKEY_CLASSES_ROOT\Drive\shell\CommandPrompt\shell\cmd1]
+        @="@shell32.dll,-8506"
+        "MUIVerb"="Open Here"
+        "Icon"="imageres.dll,-5323"
+        "NoWorkingDirectory"=""
+
+        [HKEY_CLASSES_ROOT\Drive\shell\CommandPrompt\shell\cmd1\command]
+        @="cmd.exe /s /k pushd \"%V\""
+
+        [HKEY_CLASSES_ROOT\Drive\shell\CommandPrompt\shell\cmd2]
+        @="Open Here as Administrator"
+        "HasLUAShield"=""
+        "Icon"="imageres.dll,-5324"
+
+        [HKEY_CLASSES_ROOT\Drive\shell\CommandPrompt\shell\cmd2\command]
+        @="cmd /c echo|set/p=\"%L\"|powershell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
+
+        [HKEY_CLASSES_ROOT\LibraryFolder\Background\shell\CommandPrompt]
+        "Icon"="imageres.dll,-5323"
+        "MUIVerb"="Command Prompt"
+        "Extended"=""
+        "SubCommands"=""
+
+        [HKEY_CLASSES_ROOT\LibraryFolder\Background\shell\CommandPrompt\shell\cmd1]
+        @="@shell32.dll,-8506"
+        "MUIVerb"="Open Here"
+        "Icon"="imageres.dll,-5323"
+        "NoWorkingDirectory"=""
+
+        [HKEY_CLASSES_ROOT\LibraryFolder\Background\shell\CommandPrompt\shell\cmd1\command]
+        @="cmd.exe /s /k pushd \"%V\""
+
+        [HKEY_CLASSES_ROOT\LibraryFolder\Background\shell\CommandPrompt\shell\cmd2]
+        @="Open Here as Administrator"
+        "HasLUAShield"=""
+        "Icon"="imageres.dll,-5324"
+
+        [HKEY_CLASSES_ROOT\LibraryFolder\Background\shell\CommandPrompt\shell\cmd2\command]
+        @="cmd /c echo|set/p=\"%V\"|powershell -NoP -W 1 -NonI -NoL \"SaPs 'cmd' -Args '/c \"\"\"cd /d',$([char]34+$Input+[char]34),'^&^& start /b cmd.exe\"\"\"' -Verb RunAs\""
 
 
 
 ;       * Add "Copy Path"
+;       Created by: Shawn Brink
+;       Created on: December 30th 2016
 ;       https://www.tenforums.com/tutorials/73649-copy-path-add-context-menu-windows-10-a.html
 
         [HKEY_CLASSES_ROOT\AllFilesystemObjects\shell\windows.copyaspath]
@@ -559,26 +749,22 @@
 
 
 ;       * Remove "Give access to"
+;       Created by: Shawn Brink
+;       Created on: April 10, 2016
+;       Updated on: July 11, 2020
+;       https://www.tenforums.com/tutorials/46888-give-access-context-menu-add-remove-windows-10-a.html
 
-;       [-HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\Sharing]
+        [-HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\Sharing]
 
-;       [-HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\ModernSharing]
+        [-HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\Sharing]
 
-;       [-HKEY_CLASSES_ROOT\Directory\Background\shellex\ContextMenuHandlers\Sharing]
+        [-HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\Sharing]
 
-;       [-HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\Sharing]
+        [-HKEY_CLASSES_ROOT\Drive\shellex\ContextMenuHandlers\Sharing]
 
-;       [-HKEY_CLASSES_ROOT\Directory\shellex\CopyHookHandlers\Sharing]
+        [-HKEY_CLASSES_ROOT\LibraryFolder\background\shellex\ContextMenuHandlers\Sharing]
 
-;       [-HKEY_CLASSES_ROOT\Directory\shellex\PropertySheetHandlers\Sharing]
-
-;       [-HKEY_CLASSES_ROOT\Drive\shellex\ContextMenuHandlers\Sharing]
-
-;       [-HKEY_CLASSES_ROOT\Drive\shellex\PropertySheetHandlers\Sharing]
-
-;       [-HKEY_CLASSES_ROOT\LibraryFolder\background\shellex\ContextMenuHandlers\Sharing]
-
-;       [-HKEY_CLASSES_ROOT\UserLibraryFolder\shellex\ContextMenuHandlers\Sharing]
+        [-HKEY_CLASSES_ROOT\UserLibraryFolder\shellex\ContextMenuHandlers\Sharing]
 
 
 
@@ -610,6 +796,7 @@
 
 
 ;       * Add "Control Panel"
+;       Created by: Shawn Brink
 ;       https://www.tenforums.com/tutorials/31976-add-control-panel-context-menu-windows-10-a.html
 
         [HKEY_CLASSES_ROOT\DesktopBackground\Shell\ControlPanel]
@@ -776,6 +963,19 @@
 ;       [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Settings\shell\16menu\command]
 ;       @="explorer ms-settings:holographic"
 
+
+
+;       * Remove "Always available offline" context menu of Network Files and Folders
+;       Created by: Shawn Brink
+;       Created on: August 24, 2020
+;       https://www.tenforums.com/tutorials/163151-how-add-remove-always-available-offline-context-menu-windows.html
+
+        [-HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\{474C98EE-CF3D-41f5-80E3-4AAB0AB04301}]
+
+        [-HKEY_CLASSES_ROOT\Folder\shellex\ContextMenuHandlers\Offline Files]
+
+        [-HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\Offline Files]
+
 ;   #######################################################
 
 
@@ -786,8 +986,8 @@
 ;   # KEYBOARD SETTINGS
 ;   #######################################################
 
-;       * Keep NumLock always on
-;       This may work only if Fast Startup is turned off. Setting NumLock in BIOS is best.
+;       * Keep NumLock always ON
+;       This may work only if Fast Startup is disabled. Setting NumLock in BIOS is best.
 
         [HKEY_CURRENT_USER\Control Panel\Keyboard]
         "InitialKeyboardIndicators"="2"
@@ -813,6 +1013,9 @@
 
 
 ;       * Disable Auto Corrention on Hardware Keyboard
+;       Created by: Shawn Brink
+;       Created on: November 17th 2017
+;       Updated on: May 5th 2018
 ;       https://www.tenforums.com/tutorials/98269-turn-off-autocorrect-hardware-keyboard-windows-10-a.html
 
         [HKEY_CURRENT_USER\Software\Microsoft\Input\Settings]
@@ -902,6 +1105,8 @@
 ;       ***************************************************
 
 ;           > Disable Cortana Win+C Keyboard Shortcut
+;           Created by: Shawn Brink
+;           Created on: January 7th 2016
 ;           https://www.tenforums.com/tutorials/74284-turn-off-cortana-listen-keyboard-shortcut-windows-10-a.html
 
             [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
@@ -909,11 +1114,12 @@
 
 
 
-;           > Disable High Contrast Keyboard Shortcut
+;           > Disable High Contrast Keyboard Shortcut and Disable Warning Message and Sound
 ;           https://www.tenforums.com/tutorials/103598-enable-disable-high-contrast-keyboard-shortcut-windows.html
+;           https://winaero.com/enable-or-disable-high-contrast-message-and-sound-in-windows-10/
 
             [HKEY_CURRENT_USER\Control Panel\Accessibility\HighContrast]
-            "Flags"="4218"
+            "Flags"="4194"
 
 ;       ***************************************************
 
@@ -928,14 +1134,26 @@
 ;   #######################################################
 
 ;       * Enable Update Apps Automatically in Store for All Users
-;       https://www.tenforums.com/tutorials/6664-turn-off-automatic-updates-apps-windows-10-store.html
+;       Created by: Shawn Brink
+;       http://www.tenforums.com/tutorials/6664-store-update-apps-automatically-turn-off-windows-10-a.html
 
+;       Default
+;       [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
+;       "AutoDownload"=-
+
+;       Always ON
         [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
         "AutoDownload"=dword:00000004
+
+;       Always OFF
+;       [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
+;       "AutoDownload"=dword:00000002
 
 
 
 ;       * Enable "Check for updates" in Windows Update
+;       Created by: Shawn Brink
+;       Created on: September 24th 2016
 ;       https://www.tenforums.com/tutorials/65013-enable-disable-check-windows-updates-windows-10-a.html
 
         [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
@@ -944,6 +1162,7 @@
 
 
 ;       * Enable Automatic Updates
+;       Created by: Shawn Brink
 ;       https://www.tenforums.com/tutorials/8013-enable-disable-windows-update-automatic-updates-windows-10-a.html
 
         [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]
@@ -951,6 +1170,9 @@
 
 
 ;       * Enable Automatic Device Driver Installation
+;       Created by: Shawn Brink
+;       Created on: August 13th 2015
+;       Updated on: Deccember 3rd 2017
 ;       https://www.tenforums.com/tutorials/15989-turn-off-device-driver-automatic-installation-windows-10-a.html
 
         [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata]
@@ -959,6 +1181,9 @@
 
 
 ;       * Enable Including Driver Updates in Windows Update
+;       Created by: Shawn Brink
+;       Created on: April 24th 2016
+;       Updated on: September 7th 2019
 ;       https://www.tenforums.com/tutorials/48277-enable-disable-driver-updates-windows-update-windows-10-a.html
 
         [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Update]
@@ -987,10 +1212,24 @@
 
 
 ;       * Disable Allow downloads from other PCs
+;       Created by: Shawn Brink
+;       Created on: March 18th 2015
+;       Updated on: February 8th 2018
 ;       https://www.tenforums.com/tutorials/4742-choose-how-windows-store-app-updates-downloaded-windows-10-a.html
 
         [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Settings]
         "DownloadMode"="0"
+
+
+
+;       * Enable Safeguards for Feature Updates
+;       Created by: Shawn Brink
+;       Created on: October 24, 2020
+;       https://www.tenforums.com/tutorials/167006-how-disable-safeguard-holds-feature-updates-windows-10-a.html
+
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+    "DisableWUfBSafeguards"=-
 
 ;   #######################################################
 
@@ -1041,6 +1280,8 @@
 
 
 ;       * Enable Animations
+;       Created by: Shawn Brink
+;       Created on: February 7th 2019
 ;       https://www.tenforums.com/tutorials/126795-enable-disable-animations-taskbar-windows-10-a.html
 
         [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
@@ -1064,6 +1305,16 @@
 
 
 
+;       * Enable Camera ON/OFF On-screen Display (OSD) Notifications
+;       Created by: Shawn Brink
+;       Created on: October 9, 2020
+;       https://www.tenforums.com/tutorials/166065-how-enable-disable-camera-off-osd-notifications-windows-10-a.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\OEM\Device\Capture]
+        "NoPhysicalCameraLED"=dword:00000001
+
+
+
 ;       * Disable cortana but keep search
 
         [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
@@ -1084,6 +1335,30 @@
         "CortanaConsent"=dword:00000000
         "AllowSearchToUseLocation"=dword:00000000
         "AllowCloudSearch"=dword:00000000
+
+
+
+;       * Turn Off Device Search History
+;       Created by: Shawn Brink
+;       Created on: October 3, 2015
+;       Updated on: June 9, 2020
+;       https://www.tenforums.com/tutorials/25016-turn-off-search-online-include-web-results-windows-10-a.html
+
+        [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+        "DisableSearchBoxSuggestions"=dword:00000001
+
+
+
+;       * Disable Meet Now icon
+;       Created by: Shawn Brink
+;       Created on: November 19, 2020
+;       https://www.tenforums.com/tutorials/165990-how-add-remove-meet-now-icon-taskbar-windows-10-a.html
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+        "HideSCAMeetNow"=dword:00000001
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+        "HideSCAMeetNow"=dword:00000001
 
 
 
@@ -1134,7 +1409,7 @@
 
 
 
-;       * Hide Most Used Apps on Windows 10 Start Menu
+;       * Hide Most Used Apps on Start Menu
 ;       https://www.majorgeeks.com/content/page/how_to_show_or_hide_most_used_apps_on_windows_10_start_menu.html
 
         [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
@@ -1279,6 +1554,137 @@
 
 
 ;   #######################################################
+;   # WINDOWS SANDBOX
+;   #######################################################
+
+
+;       * Enable or Disable Networking in Windows Sandbox
+;       Created by: Shawn Brink
+;       Created on: July 2, 2020
+;       https://www.tenforums.com/tutorials/159828-how-enable-disable-networking-windows-sandbox-windows-10-a.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Sandbox]
+        "AllowNetworking"=-
+
+
+
+;       * Enable Printer Sharing with Windows Sandbox
+;       Created by: Shawn Brink
+;       Created on: July 2, 2020
+;       https://www.tenforums.com/tutorials/159835-enable-disable-printer-sharing-windows-sandbox-windows-10-a.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Sandbox]
+        "AllowPrinterRedirection"=-
+
+
+
+;       * Enable vGPU Sharing for Windows Sandbox
+;       Created by: Shawn Brink
+;       Created on: July 2, 2020
+;       https://www.tenforums.com/tutorials/159840-enable-disable-vgpu-sharing-windows-sandbox-windows-10-a.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Sandbox]
+        "AllowVGPU"=dword:00000001
+
+
+
+;       * Enable Video Input in Windows Sandbox
+;       Created by: Shawn Brink
+;       Created on: July 2, 2020
+;       https://www.tenforums.com/tutorials/159841-how-enable-disable-video-input-windows-sandbox-windows-10-a.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Sandbox]
+        "AllowVideoInput"=dword:00000001
+
+
+
+;       * Disable Audio Input in Windows Sandbox
+;       Created by: Shawn Brink
+;       Created on: July 2, 2020
+;       https://www.tenforums.com/tutorials/159825-how-enable-disable-audio-input-windows-sandbox-windows-10-a.html
+
+;       [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Sandbox]
+;       "AllowAudioInput"=dword:00000000
+
+
+
+;       * Enable Clipboard Sharing with Windows Sandbox
+;       Created by: Shawn Brink
+;       Created on: July 2, 2020
+;       https://www.tenforums.com/tutorials/159821-enable-disable-clipboard-sharing-windows-sandbox-windows-10-a.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Sandbox]
+        "AllowClipboardRedirection"=-
+
+;   #######################################################
+
+
+
+
+
+;   #######################################################
+;   # MICROSOFT DEFENDER
+;   #######################################################
+
+;       * Enable Real-time Protection for Microsoft Defender Antivirus
+;       Created by: Shawn Brink
+;       https://www.tenforums.com/tutorials/3569-turn-off-real-time-protection-microsoft-defender-antivirus.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]
+        "DisableRealtimeMonitoring"=-
+
+
+
+;       * Disable Microsoft Defender Antivirus Updates Over Metered Connections
+;       Created by: Shawn Brink
+;       Created on: July 24, 2020
+;       https://www.tenforums.com/tutorials/161274-enable-microsoft-defender-antivirus-updates-over-metered-connections.html
+
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Signature Updates]
+        "MeteredConnectionUpdates"=dword:00000000
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Signature Updates]
+        "MeteredConnectionUpdates"=-
+
+
+
+;       * Disable Non-critical Notifications from Windows Security
+;       Created by: Shawn Brink
+;       Created on: March 5th 2018
+;       Updated on: January 16th 2020
+;       https://www.tenforums.com/tutorials/105486-enable-disable-notifications-windows-security-windows-10-a.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications]
+        "DisableEnhancedNotifications"=dword:00000001
+
+
+
+;       * Undo Policy to Not Specify Scheduled Scan Type for Microsoft Defender Antivirus
+;       Created by: Shawn Brink
+;       Created on: October 17th 2019
+;       https://www.tenforums.com/tutorials/142743-specify-microsoft-defender-antivirus-scheduled-scan-type-windows-10-a.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Scan]
+        "ScanParameters"=-
+
+
+;       * Enable Core Isolation Memory Integrity
+;       Created by: Shawn Brink
+;       Created on: April 11th 2018
+;       https://www.tenforums.com/tutorials/104025-turn-off-core-isolation-memory-integrity-windows-10-a.html
+
+;       It is required to have Virtualization enabled for your CPU in your UEFI firmware settings to have Core isolation Memory integrity available.
+;       [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity]
+;       "Enabled"=dword:00000001
+
+;   #######################################################
+
+
+
+
+
+;   #######################################################
 ;   # MISCELLANY
 ;   #######################################################
 
@@ -1339,6 +1745,20 @@
 
 
 
+;       * Disable Indexer Backoff
+;       Created by: Shawn Brink
+;       Created on: September 17th 2017
+;       https://www.tenforums.com/tutorials/93655-enable-disable-indexer-backoff-windows.html
+
+;       Enable
+;       [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+;       "DisableBackoff"=-
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+        "DisableBackoff"=dword:00000001
+
+
+
 ;       * Disable Advertising ID for Relevant Ads
 
         [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
@@ -1346,7 +1766,7 @@
 
 
 
-;       * Disable App Launch Tracking in Windows 10
+;       * Disable App Launch Tracking
 ;       https://www.majorgeeks.com/content/page/how_to_disable_app_launch_tracking_in_windows_10.html
 
         [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\EdgeUI]
@@ -1357,7 +1777,7 @@
 
 
 
-;       * Disable Automatic Maintenance in Windows 10
+;       * Disable Automatic Maintenance
 ;       https://www.majorgeeks.com/content/page/how_to_disable_automatic_maintenance_in_windows_10.html
 
         [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]
@@ -1386,6 +1806,44 @@
 
 
 
+;       * Disable Developer Tools in Microsoft Edge for All Users
+;       Created by: Shawn Brink
+;       Created on: August 15, 2020
+;       https://www.tenforums.com/tutorials/162594-how-enable-disable-developer-tools-microsoft-edge-chromium.html
+
+;       [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge]
+;       "DeveloperToolsAvailability"=dword:00000002
+
+
+
+;       * Disable Spellcheck in Microsoft Edge for All Users
+;       Created by: Shawn Brink
+;       Created on: December 30, 2020
+;       https://www.tenforums.com/tutorials/159556-turn-off-check-spelling-languages-microsoft-edge-chromium.html
+
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge]
+        "SpellcheckEnabled"=dword:00000000
+
+
+
+;       * Hide Microsoft Edge button in IE
+
+        [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Internet Explorer\Main]
+        "HideNewEdgeButton"=dword:00000001
+
+
+
+;       * Enable Full Screen Mode for Microsoft Edge Chromium
+;       Created by: Shawn Brink
+;       Created on: August 8, 2020
+;       https://www.tenforums.com/tutorials/162163-how-enable-disable-full-screen-mode-microsoft-edge-chromium.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge]
+        "FullscreenAllowed"=-
+
+
+
 ;       * Disable JPEG Desktop Wallpaper Import Quality Reduction
 
         [HKEY_CURRENT_USER\Control Panel\Desktop]
@@ -1394,7 +1852,9 @@
 
 
 ;       * Enable AutoEndTasks at Shut Down, Restart, or Sign Out
-;       https://www.majorgeeks.com/content/page/how_to_disable_autoendtasks_at_shut_downrestartor_sign_out.html
+;       Created by: Shawn Brink
+;       Created on: November 12th 2017
+;       https://www.tenforums.com/tutorials/97821-turn-autoendtasks-restart-shut-down-sign-out-windows-10-a.html
 
         [HKEY_CURRENT_USER\Control Panel\Desktop]
         "AutoEndTasks"="1"
@@ -1405,10 +1865,13 @@
 
 
 ;       * Enable Clipboard History
-;       https://www.tenforums.com/tutorials/110039-enable-disable-clipboard-history-windows-10-a.html#option1
+;       Created by: Shawn Brink
+;       Created on: May 12th 2018
+;       https://www.tenforums.com/tutorials/110039-enable-disable-clipboard-history-windows-10-a.html
 
         [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
         "AllowClipboardHistory"=-
+
 
 
 
@@ -1424,6 +1887,30 @@
 
         [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
         "HiberbootEnabled"=dword:00000001
+
+
+
+;       * Add "Windows Security" to Control Panel
+;       Created by: Shawn Brink
+;       Created on: August 21, 2017
+;       Updated on: July 5, 2020
+;       https://www.tenforums.com/tutorials/91909-add-windows-security-control-panel-windows-10-a.html
+
+        [HKEY_CLASSES_ROOT\CLSID\{d54e8f06-2413-4dea-b6d3-6b579e55fa36}]
+        @="Windows Security"
+        "InfoTip"="Windows Security is your home to view and managa the security and health of your device."
+        "System.ControlPanel.Category"="5"
+        "System.ControlPanel.EnableInSafeMode"="3"
+        "System.Software.TasksFileUrl"="Internal"
+
+        [HKEY_CLASSES_ROOT\CLSID\{d54e8f06-2413-4dea-b6d3-6b579e55fa36}\DefaultIcon]
+        @="%ProgramFiles%\\Windows Defender\\EppManifest.dll,-100"
+
+        [HKEY_CLASSES_ROOT\CLSID\{d54e8f06-2413-4dea-b6d3-6b579e55fa36}\Shell\Open\command]
+        @="explorer windowsdefender:"
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ControlPanel\NameSpace\{d54e8f06-2413-4dea-b6d3-6b579e55fa36}]
+        @="Windows Security"
 
 
 
@@ -1446,7 +1933,7 @@
 
 
 
-;       * Disable Find My Device in Windows 10
+;       * Disable Find My Device
 ;       https://www.majorgeeks.com/content/page/how_to_turn_on_or_off_find_my_device_in_windows_10.html
 
         [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Settings\FindMyDevice]
@@ -1455,7 +1942,10 @@
 
 
 ;       * Enable Game Mode
-;       https://www.tenforums.com/tutorials/75936-turn-off-game-mode-windows-10-a.html#option2
+;       Created by: Shawn Brink
+;       Created on: January 27th 2016
+;       Updated on: November 6th 2017
+;       https://www.tenforums.com/tutorials/75936-turn-off-game-mode-windows-10-a.html
 
         [HKEY_CURRENT_USER\Software\Microsoft\GameBar]
         "AllowAutoGameMode"=dword:00000001
@@ -1463,7 +1953,7 @@
 
 
 
-;       * Disable Game Bar in Windows 10
+;       * Disable Game Bar
 ;       https://www.majorgeeks.com/content/page/how_to_turn_on_or_off_xbox_game_bar_in_windows_10.html
 
         [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR]
@@ -1543,6 +2033,7 @@
 
 
 ;       * To Set Feedback Frequency to Never
+;       Created by: Shawn Brink
 ;       https://www.tenforums.com/tutorials/2441-how-change-feedback-frequency-windows-10-a.html
 
         [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Siuf\Rules]
@@ -1552,14 +2043,16 @@
 
 
 ;       * Disable Windows Feedback Notifications
-;       https://www.tenforums.com/tutorials/2441-how-change-feedback-frequency-windows-10-a.htm
+;       Created by: Shawn Brink
+;       Created on: May 9th 2018
+;       https://www.tenforums.com/tutorials/2441-change-feedback-frequency-windows-10-a.html
 
         [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection]
         "DoNotShowFeedbackNotifications"=dword:00000001
 
 
 
-;       * Disable AutoPlay in Windows 10
+;       * Disable AutoPlay
 ;       https://www.majorgeeks.com/content/page/turn_autoplay_on_or_off.html
 
         [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers]
@@ -1616,7 +2109,7 @@
 
 
 
-;       * Don't Replace Command Prompt with Windows PowerShell On the Win+X Menu
+;       * Don't Replace Command Prompt with Windows PowerShell on the Win+X Menu
 
         [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
         "DontUsePowerShellOnWinX"=dword:00000001
@@ -1844,10 +2337,13 @@
 
 
 
-;       * Hide Microsoft Edge button in IE
+;       * Disable Device Search History
+;       Created by: Shawn Brink
+;       Created on: September 18, 2020
+;       https://www.tenforums.com/tutorials/133365-turn-off-device-search-history-windows-10-a.html
 
-        [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Internet Explorer\Main]
-        "HideNewEdgeButton"=dword:00000001
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SearchSettings]
+        "IsDeviceSearchHistoryEnabled"=dword:00000000
 
 
 
@@ -1878,6 +2374,8 @@
 
 
 ;       * Disable Internet Explorer Send Feedback Smiley Button
+;       Created by: Shawn Brink
+;       Crated on: July 17th 2016
 ;       https://www.tenforums.com/tutorials/56530-remove-internet-explorer-send-feedback-smiley-button.html
 
         [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Internet Explorer\Restrictions]
@@ -1956,5 +2454,150 @@
         [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Command Processor]
         "CompletionChar"=dword:00000009
         "PathCompletionChar"=dword:00000009
+
+
+
+;       * Enable Mapped Drives Availability from Elevated Command Prompt and Elevated PowerShell
+;       Created by: Shawn Brink
+;       Created on: April 29, 2020
+;       https://www.tenforums.com/tutorials/155350-enable-mapped-drives-available-elevated-command-prompt.html
+
+;       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+;       "EnableLinkedConnections"=dword:00000001
+
+
+
+;       * Clear All Recent Documents in WordPad
+;       Created by: Shawn Brink
+;       Created on: May 16, 2020
+;       https://www.tenforums.com/tutorials/156484-how-clear-recent-documents-wordpad-app-windows-10-a.html
+
+        [-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Applets\Wordpad\Recent File List]
+
+
+
+;       * Clear All Recent Pictures in Paint (mspaint)
+;       Created by: Shawn Brink
+;       Created on: May 14, 2020
+;       https://www.tenforums.com/tutorials/156361-how-clear-recent-pictures-paint-mspaint-app-windows-10-a.html
+
+        [-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Applets\Paint\Recent File List]
+
+
+
+;       * Prevent Dumps from being Deleted due to Low Disk Space
+;       Created by: Rich Kurtz
+;       Created on: June 27 2020
+;       https://www.tenforums.com/tutorials/159387-disable-auto-deletion-memory-dumps-low-disk-space-windows-10-a.html
+
+
+;       [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
+;       "AlwaysKeepMemoryDump"=dword:00000001
+
+
+
+;       * Disable Your Account Info page in Settings
+;       Created by: Shawn Brink
+;       Created on: November 4, 2020
+;       https://www.tenforums.com/tutorials/167712-enable-disable-your-account-info-page-settings-windows-10-a.html
+
+;       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Settings\AllowYourAccount]
+;       "value"=dword:00000000
+
+
+
+;       * Enable Remote Desktop (RDP) Access to All Removable Storage Devices
+;       Created by: Shawn Brink
+;       Created on: May 15, 2020
+;       Tutorial: https://www.tenforums.com/tutorials/156422-enable-remote-access-removable-storage-devices-windows.html
+
+        [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\RemovableStorageDevices]
+        "AllowRemoteDASD"=-
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\RemovableStorageDevices]
+        "AllowRemoteDASD"=dword:00000001
+
+
+
+;       * Remove Quota tab in Drive Properties for All Users
+;       Created by: Shawn Brink
+;       Created on: August 22, 2020
+;       https://www.tenforums.com/tutorials/163021-how-add-remove-quota-tab-drive-properties-windows-10-a.html
+
+;       [-HKEY_CLASSES_ROOT\Drive\shellex\PropertySheetHandlers\{7988B573-EC89-11cf-9C00-00AA00A14F56}]
+
+
+
+;       * Remove ReadyBoost tab in Drive Properties for All Users
+;       Created by: Shawn Brink
+;       Created on: August 22, 2020
+;       https://www.tenforums.com/tutorials/163025-how-add-remove-readyboost-tab-drive-properties-windows-10-a.html
+
+;       [-HKEY_CLASSES_ROOT\Drive\shellex\PropertySheetHandlers\{55B3A0BD-4D28-42fe-8CFB-FA3EDFF969B8}]
+
+
+
+;       * Disable Microsoft Defender SmartScreen for Microsoft Edge
+;       Created by: Shawn Brink
+;       Created on: April 21st 2015
+;       Updated on: April 6th 2017
+;       https://www.tenforums.com/tutorials/5520-turn-off-smartscreen-microsoft-edge-windows-10-a.html
+
+;       [HKEY_CURRENT_USER\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\PhishingFilter]
+;       "EnabledV9"=dword:00000000
+;       "PreventOverride"=dword:00000000
+
+
+
+;       * Disable SmartScreen for Microsoft Store apps
+;       Created by: Shawn Brink
+;       Created on: April 6, 2017
+;       Updated on: June 22, 2020
+;       https://www.tenforums.com/tutorials/81139-turn-off-smartscreen-microsoft-store-apps-windows-10-a.html
+
+;       [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AppHost]
+;       "EnableWebContentEvaluation"=dword:00000000
+;       "PreventOverride"=dword:00000000
+
+
+
+;       * Disable SmartScreen
+;       Created by: Shawn Brink
+;       Created on: April 24th 2015
+;       Updated on: April 6th 2017
+;       https://www.tenforums.com/tutorials/5593-turn-off-smartscreen-apps-files-web-windows-10-a.html
+
+;       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+;       "SmartScreenEnabled"="Off"
+
+
+
+;       * Disable SmartScreen for Apps and Files from Web
+;       Created by: Shawn Brink
+;       Created on: September 13th 2018
+;       https://www.tenforums.com/tutorials/5593-turn-off-smartscreen-apps-files-web-windows-10-a.html
+
+;       [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+;       "EnableSmartScreen"=dword:00000000
+;       "ShellSmartScreenLevel"=-
+
+
+
+;       * Disable "Get even more out of Windows" or "Let's make Windows even better" Suggestions
+;       Created by: Shawn Brink
+;       Created on: July 31, 2019
+;       https://www.tenforums.com/tutorials/137645-turn-off-get-even-more-out-windows-suggestions-windows-10-a.html
+
+        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileEngagement]
+        "ScoobeSystemSettingEnabled"=dword:00000000
+
+
+
+;       * Disable Showing Notifications on Lock Screen
+;       Created by: Shawn Brink
+;       https://www.tenforums.com/tutorials/31116-turn-off-lock-screen-notifications-windows-10-a.html
+
+;       [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings]
+;       "NOC_GLOBAL_SETTING_ALLOW_TOASTS_ABOVE_LOCK"=dword:00000000
 
 ;   #######################################################
