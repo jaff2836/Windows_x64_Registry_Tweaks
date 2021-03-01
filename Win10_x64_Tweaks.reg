@@ -7,7 +7,7 @@
 ;   This code is currently work in progress.
 ;   However, you can currently use the registry.
 
-;   All registry codes are in TenForums, MajorGeeks, and Ray Woodcock.
+;   All registry codes are in TenForums, MajorGeeks, AskVG.com and Ray Woodcock.
 
 
 
@@ -28,6 +28,69 @@
 ;   #######################################################
 ;   # FILE EXPLORER
 ;   #######################################################
+
+;       ***************************************************
+;       * Add / Remove Folders on Navigation Pane
+;       ***************************************************
+
+;           > Remove OneDrive icon
+;           Uninstalling OneDrive may help for some purposes, but will not necessarily remove icon from File Manager navigation pane.
+;           http://www.tenforums.com/tutorials/4818-onedrive-add-remove-navigation-pane-windows-10-a.html
+
+;           [HKEY_CURRENT_USER\Software\Classes\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
+;           "System.IsPinnedToNameSpaceTree"=dword:00000000
+;           [-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
+
+
+
+;           > Remove user folder
+;           This will not work if Show All Folders is checked.
+;           https://www.tenforums.com/tutorials/88845-add-remove-user-folder-navigation-pane-windows-10-a.html
+
+;           [HKEY_CURRENT_USER\Software\Classes\CLSID\{59031a47-3f72-44a7-89c5-5595fe6b30ee}]
+;           "System.IsPinnedToNameSpaceTree"=dword:00000000
+
+
+
+;           > Remove duplicate drive entries
+;           https://www.tenforums.com/tutorials/4675-add-remove-duplicate-drives-navigation-pane-windows-10-a.html
+
+            [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders\{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}]
+            [-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders\{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}]
+
+
+
+;           > Remove Quick Access
+;           Alternately, File Explorer > menu > View > Options > Change folder and search options:
+;               (1) Change Open File Explorer to This PC. (2) Uncheck Privacy items referring to Quick Access.
+;           https://www.tenforums.com/tutorials/4844-remove-quick-access-navigation-pane-windows-10-a.html
+
+;           [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+;           "HubMode"=dword:00000001
+
+
+
+;           > Remove Linux(WSL) Distro's
+;           Created by: Shawn Brink
+;           Created on: February 19th 2019
+;           https://www.tenforums.com/tutorials/127506-add-remove-linux-navigation-pane-windows-10-a.html
+
+;           [HKEY_CURRENT_USER\Software\Classes\CLSID\{B2B4A4D1-2754-4140-A2EB-9A76D9D7CDC6}]
+;           @="Linux"
+;           "System.IsPinnedToNameSpaceTree"=dword:00000000
+
+
+
+;           > Show ALL Folders
+;           Created by: Shawn Brink
+;           https://www.tenforums.com/tutorials/7078-turn-off-show-all-folders-windows-10-navigation-pane.html
+
+;           [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+;           "NavPaneShowAllFolders"=dword:00000001
+
+;       ***************************************************
+
+
 
 ;       * Remove Folders From This PC
 ;       Created by: Shawn Brink
@@ -73,61 +136,8 @@
 ;       [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a}]
 
 
-;       ***************************************************
-;       * Remove Folders on Navigation Pane
-;       ***************************************************
 
-;           > Remove OneDrive icon
-;           Uninstalling OneDrive may help for some purposes, but will not necessarily remove icon from File Manager navigation pane.
-;           http://www.tenforums.com/tutorials/4818-onedrive-add-remove-navigation-pane-windows-10-a.html
-
-;           [HKEY_CURRENT_USER\Software\Classes\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
-;           "System.IsPinnedToNameSpaceTree"=dword:00000000
-;           [-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
-
-
-
-;           > Remove user folder
-;           This will not work if Show All Folders is checked.
-;           https://www.tenforums.com/tutorials/88845-add-remove-user-folder-navigation-pane-windows-10-a.html
-
-            [HKEY_CURRENT_USER\Software\Classes\CLSID\{59031a47-3f72-44a7-89c5-5595fe6b30ee}]
-            "System.IsPinnedToNameSpaceTree"=dword:00000000
-
-
-
-;           > Remove duplicate drive entries
-;           https://www.tenforums.com/tutorials/4675-add-remove-duplicate-drives-navigation-pane-windows-10-a.html
-
-            [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders\{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}]
-            [-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders\{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}]
-
-
-
-;           > Remove Quick Access
-;           Alternately, File Explorer > menu > View > Options > Change folder and search options:
-;               (1) Change Open File Explorer to This PC. (2) Uncheck Privacy items referring to Quick Access.
-;           https://www.tenforums.com/tutorials/4844-remove-quick-access-navigation-pane-windows-10-a.html
-
-            [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
-            "HubMode"=dword:00000001
-
-
-
-;           > Remove Linux(WSL) Distro's
-;           Created by: Shawn Brink
-;           Created on: February 19th 2019
-;           https://www.tenforums.com/tutorials/127506-add-remove-linux-navigation-pane-windows-10-a.html
-
-            [HKEY_CURRENT_USER\Software\Classes\CLSID\{B2B4A4D1-2754-4140-A2EB-9A76D9D7CDC6}]
-            @="Linux"
-            "System.IsPinnedToNameSpaceTree"=dword:00000000
-
-;       ***************************************************
-
-
-
-;       * Remove "Shortcut" from title of new shortcuts
+;        * Remove "Shortcut" from title of new shortcuts
 ;       Undo with "link"=-
 
         [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
@@ -202,6 +212,102 @@
 
         [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
         "Max Cached Icons"="4096"
+
+
+
+;       * Show hidden files and folders
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "Hidden"=dword:00000001
+
+;       or Hide hidden files and folders
+;       [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+;       "Hidden"=dword:00000002
+
+
+
+;       * Show File Extensions
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "HideFileExt"=dword:00000000
+
+;       or Hide File Extensions
+;       [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+;       "HideFileExt"=dword:00000001
+
+
+
+;       * Disable track app launches to improve Start and search results
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "Start_TrackProgs"=dword:00000000
+
+
+
+;       * Disable Showing recently opened items in Jump Lists on Start or the taskbar and in File Explorer Quick Access
+;       Undo with:
+;       [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+;       "Start_TrackDocs"=dword:00000001
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "Start_TrackDocs"=dword:00000000
+
+
+
+;       * Don't change the upper/lower case of filenames
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "DontPrettyPath"=dword:00000000
+
+
+
+;       * Enable Checkboxes
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "AutoCheckSelect"=dword:00000001
+
+
+
+;       * Enalbe Launch Folder Windows in a Separate Process
+;       Created by: Shawn Brink
+;       Created on: January 24th 2019
+;       https://www.tenforums.com/tutorials/125919-enable-disable-launch-folder-windows-separate-process-windows.html
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "SeparateProcess"=dword:00000001
+
+
+
+;       * Enable Pop-up Descriptions for Folder and Desktop Items
+;       Created by: Shawn Brink
+;       Created on: July 18th 2017
+;       https://www.tenforums.com/tutorials/89239-hide-show-pop-up-descriptions-windows-10-a.html
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "ShowInfoTip"=dword:00000001
+
+
+
+;       * Enalbe Restore Previous Folders at Logon
+;       Created by: Shawn Brink
+;       Created on: October 22nd 2016
+;       http://www.tenforums.com/tutorials/67701-restore-previous-folder-windows-logon-turn-windows-10-a.html
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "PersistBrowsers"=dword:00000001
+
+
+
+;       * Fix Windows Preview Pane Error
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "ShowPreviewHandlers"=dword:00000001
+
+
+
+;       * Enable Jumplists
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "EnableXamlJumpView"=dword:00000001
 
 ;   #######################################################
 
@@ -544,13 +650,15 @@
 
 ;       * Remove "Look for an app in the Microsoft Store" in "Open with"
 ;       Doesn't remove "Search the Microsoft Store"
+;       Created by: Shawn Brink
+;       Created on: August 15th 2017
 ;       https://www.tenforums.com/tutorials/91453-remove-look-app-store-open-windows-10-a.html
 
-;       [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
-;       "NoUseStoreOpenWith"=-
+        [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
+        "NoUseStoreOpenWith"=-
 
-;       [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
-;       "NoUseStoreOpenWith"=dword:00000001
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+        "NoUseStoreOpenWith"=dword:00000001
 
 
 
@@ -976,6 +1084,24 @@
 
         [-HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\Offline Files]
 
+
+
+;       * Add Register and Unregister Context Menu for DLL and OCX Files
+;       Created by: Shawn Brink
+;       https://www.eightforums.com/threads/register-and-unregister-context-menu-for-dll-and-ocx-files.40512/
+
+        [HKEY_CLASSES_ROOT\dllfile\shell\Register\command]
+        @="regsvr32.exe \"%L\""
+
+        [HKEY_CLASSES_ROOT\dllfile\shell\Unregister\command]
+        @="regsvr32.exe /u \"%L\""
+
+        [HKEY_CLASSES_ROOT\ocxfile\shell\Register\command]
+        @="regsvr32.exe \"%L\""
+
+        [HKEY_CLASSES_ROOT\ocxfile\shell\Unregister\command]
+        @="regsvr32.exe /u \"%L\""
+
 ;   #######################################################
 
 
@@ -1082,8 +1208,8 @@
 ;               Delay between FIRST KEYSTROKE and First Repeated Keystroke (ms)
 
                 [HKEY_CURRENT_USER\Control Panel\Accessibility\Keyboard Response]
-                "AutoRepeatDelay"="200"
-                "Last Valid Delay"=dword:000000C8
+                "AutoRepeatDelay"="250"
+                "Last Valid Delay"=dword:000000FA
 
 
 
@@ -1091,8 +1217,8 @@
 ;               Delay between REPEATED KEYSTROKE (ms)
 
                 [HKEY_CURRENT_USER\Control Panel\Accessibility\Keyboard Response]
-                "AutoRepeatRate"="20"
-                "Last Valid Repeat"=dword:00000014
+                "AutoRepeatRate"="25"
+                "Last Valid Repeat"=dword:00000019
 
 ;           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -1227,9 +1353,8 @@
 ;       Created on: October 24, 2020
 ;       https://www.tenforums.com/tutorials/167006-how-disable-safeguard-holds-feature-updates-windows-10-a.html
 
-
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
-    "DisableWUfBSafeguards"=-
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+        "DisableWUfBSafeguards"=-
 
 ;   #######################################################
 
@@ -1241,6 +1366,16 @@
 ;   # TASKBAR
 ;   #######################################################
 
+;       * Lock Taskbar
+;       Created by: Shawn Brink
+;       Created on: June 15th 2016
+;       https://www.tenforums.com/tutorials/53449-lock-unlock-taskbar-windows-10-a.html
+
+        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "TaskbarSizeMove"=dword:00000000
+
+
+
 ;       * Last active click: just click on the taskbar icon to return to the particular session
 ;           (among several open) where you were last working
 ;       Undo with "LastActiveClick"=-
@@ -1250,10 +1385,17 @@
 
 
 
-;       Change Delay Time to Show Taskbar Thumbnails in Windows 10
+;       * Instantly Show Taskbar Thumbnails in Windows 10
 ;       https://www.tenforums.com/tutorials/21005-change-delay-time-show-taskbar-thumbnails-windows-10-a.html
         [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
         "ExtendedUIHoverTime"=dword:00000001
+
+
+
+;       * Show TaskView Button
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "ShowTaskViewButton"=dword:00000001
 
 
 
@@ -1284,6 +1426,20 @@
 
         [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
         "ShowSecondsInSystemClock"=dword:00000001
+
+
+
+;       * Enable Clear Acrylic Taskbar Transparency
+;       Created by: Shawn Brink
+;       Created on: March 23rd 2016
+;       Updated on: December 5th 2019
+;       https://www.tenforums.com/tutorials/45018-turn-off-clear-acrylic-taskbar-transparency-windows-10-a.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "UseOLEDTaskbarTransparency"=dword:00000001
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Dwm]
+        "ForceEffectMode"=dword:00000001
 
 
 
@@ -1320,6 +1476,16 @@
 
         [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\OEM\Device\Capture]
         "NoPhysicalCameraLED"=dword:00000001
+
+
+
+;       * Disable Cortana Button
+;       Created by: Shawn Brink
+;       Created on: December 26th 2018
+;       https://www.tenforums.com/tutorials/124150-hide-show-cortana-button-taskbar-windows-10-a.html
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+        "ShowCortanaButton"=dword:00000000
 
 
 
@@ -1417,11 +1583,21 @@
 
 
 
-;       * Hide Most Used Apps on Start Menu
+;       * Hide Most Used Apps
 ;       https://www.majorgeeks.com/content/page/how_to_show_or_hide_most_used_apps_on_windows_10_start_menu.html
 
         [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
         "NoStartMenuMFUprogramsList"=dword:00000001
+
+
+
+;       * Disable "Recently added" Apps List for All Users
+;       Created by: Shawn Brink
+;       Created on: February 22nd 2018
+;       https://www.tenforums.com/tutorials/104828-enable-disable-recently-added-apps-start-menu-windows-10-a.html
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+        "HideRecentlyAddedApps"=dword:00000001
 
 ;   #######################################################
 
@@ -1508,9 +1684,10 @@
 ;       Undo with:
 ;       "legalnoticecaption"=""
 ;       "legalnoticetext"=""
-        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
-        "legalnoticecaption"="Notice to Finder (restart computer to see this again)"
-        "legalnoticetext"="Please contact me at [user contact information] to return this computer. Many thanks!"
+
+;       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+;       "legalnoticecaption"="Notice to Finder (restart computer to see this again)"
+;       "legalnoticetext"="Please contact me at [user contact information] to return this computer. Many thanks!"
 
 ;   #######################################################
 
@@ -1523,6 +1700,11 @@
 ;   #######################################################
 
 ;       * NETWORK TWEAKS
+;       Undo with:
+;       [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters]
+;       "SizReqBuf"=-
+;       [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters]
+;       "DefaultTTL"=-
 
         [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters]
         "SizReqBuf"=dword:0000ffff
@@ -1533,6 +1715,10 @@
 
 
 ;       * Disable Network Throttling Index
+;       Undo with:
+;       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile]
+;       "NetworkThrottlingIndex"=dword:0000000a
+;       "SystemResponsiveness"=dword:00000014
 
         [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile]
         "NetworkThrottlingIndex"=dword:ffffffff
@@ -1541,7 +1727,11 @@
 
 
 ;       * FF to disable all IPv6 components, except the IPv6 loopback interface, which can't be deactivated.
-;       * 0x01  to disable IPv6 all tunnel interfaces. These include Intra-Site Automatic Tunnel Addressing Protocol (ISATAP), 6to4, and Teredo. If you have a IPv6 router, then you want to choose this one.
+;       0x01 to disable IPv6 all tunnel interfaces. These include Intra-Site Automatic Tunnel Addressing Protocol (ISATAP), 6to4, and Teredo.
+;       If you have a IPv6 router, then you want to choose this one.
+;       Undo with:
+;       [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters]
+;       "DisabledComponents"=-
 
         [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters]
         "DisabledComponents"=dword:000000ff
@@ -1549,6 +1739,7 @@
 
 
 ;       * Disable Nagle's Algorithm (Find your {NIC-id} and apply Manually)
+;       Undo with Deleting Values
 
 ;       HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{NIC-id}
 ;       "TcpAckFrequency"=dword:00000001
@@ -1714,13 +1905,6 @@
 
 
 
-;       * When opening files with unknown extension, don't prompt to look for an app in the store
-
-        [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
-        "NoUseStoreOpenWith"=dword:00000001
-
-
-
 ;       * Disable beep on error
 
         [HKEY_CURRENT_USER\Control Panel\Sound]
@@ -1731,17 +1915,12 @@
 ;       * Overwrite paging file at shutdown for security
 ;       Doesn't take too long if pagefile is small
 ;       Overwriting is not reliable for wiping SSD, but it may help
-;       Undo with dword:00000000
+;       Undo with:
+;       [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
+;       "ClearPageFileAtShutdown"=dword:00000000
+
         [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
         "ClearPageFileAtShutdown"=dword:00000001
-
-
-
-;       * Prevent system from storing recently opened files
-;       in C:\Users\Ray\AppData\Roaming\Microsoft\Windows\Recent
-;       Undo with dword:00000001
-        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
-        "Start_TrackDocs"=dword:00000000
 
 
 
@@ -1793,20 +1972,6 @@
 
 
 
-;       * Disable Featured or Suggested Apps from Automatically Installing
-
-        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
-        "SilentInstalledAppsEnabled"=dword:00000000
-
-
-
-;       * Disable Get Even More Out Of Windows Screen & Welcome Experience Page
-
-        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
-        "SubscribedContent-310093Enabled"=dword:00000000
-
-
-
 ;       * Disable Pre-launch Microsoft Edge
 
         [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]
@@ -1854,7 +2019,7 @@
 ;       * Disable JPEG Desktop Wallpaper Import Quality Reduction
 
         [HKEY_CURRENT_USER\Control Panel\Desktop]
-        "JPEGImportQuality"=dword:00000100
+        "JPEGImportQuality"=dword:00000064
 
 
 
@@ -1976,6 +2141,9 @@
         [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Windows Error Reporting]
         "Disabled"=dword:00000001
 
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\Windows Error Reporting]
+        "Disabled"=dword:00000001
+
         [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
         "Disabled"=dword:00000001
 
@@ -2082,23 +2250,40 @@
 
 
 
-;       * Disable most of Ads
+;       * Disable Featured or Suggested Apps from Automatically Installing
 
-        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
-        "SystemPaneSuggestionsEnabled"=dword:00000000
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+        "SilentInstalledAppsEnabled"=dword:00000000
+
+
+
+;       * Disable Get Even More Out Of Windows Screen & Welcome Experience Page
+
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+        "SubscribedContent-310093Enabled"=dword:00000000
+
+
+
+;       * Disable most of Ads
 
         [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
         "ShowSyncProviderNotifications"=dword:00000000
 
-        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
-        "SoftLandingEnabled"=dword:00000000
-
-        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+        [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+        "FeatureManagementEnabled"=dword:00000000
+        "OemPreInstalledAppsEnabled"=dword:00000000
+        "PreInstalledAppsEnabled"=dword:00000000
+        "PreInstalledAppsEverEnabled"=dword:00000000
         "RotatingLockScreenEnabled"=dword:00000000
-
-        [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
         "RotatingLockScreenOverlayEnabled"=dword:00000000
-
+        "SoftLandingEnabled"=dword:00000000
+        "SubscribedContent-338387Enabled"=dword:00000000
+        "SubscribedContent-338388Enabled"=dword:00000000
+        "SubscribedContent-338389Enabled"=dword:00000000
+        "SubscribedContent-338393Enabled"=dword:00000000
+        "SubscribedContent-353694Enabled"=dword:00000000
+        "SubscribedContent-353696Enabled"=dword:00000000
+        "SystemPaneSuggestionsEnabled"=dword:00000000
 
 
 ;       * Disable Aero Shake
@@ -2142,23 +2327,6 @@
 
 
 
-;       * Register and unregister dll and ocx files context menus
-
-        [HKEY_CLASSES_ROOT\dllfile\Shell]
-        [HKEY_CLASSES_ROOT\dllfile\Shell\Register]
-        [HKEY_CLASSES_ROOT\dllfile\Shell\Register\command]
-        [HKEY_CLASSES_ROOT\ocxfile\Shell]
-        [HKEY_CLASSES_ROOT\ocxfile\Shell\Register]
-        [HKEY_CLASSES_ROOT\ocxfile\Shell\Register\command]
-        @="regsvr32.exe \\\"%1\\\""
-        [HKEY_CLASSES_ROOT\dllfile\Shell\UnRegister]
-        [HKEY_CLASSES_ROOT\dllfile\Shell\UnRegister\command]
-        [HKEY_CLASSES_ROOT\ocxfile\Shell\UnRegister]
-        [HKEY_CLASSES_ROOT\ocxfile\Shell\UnRegister\command]
-        @="regsvr32.exe /u \\\"%1\\\""
-
-
-
 ;       * Enable Windows Explorer StatusBar
 
         [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\Main]
@@ -2167,7 +2335,7 @@
 
 
 
-;       * Office Telemetry/Disable data collection for Telemetry Agent
+;       * Disable Telemetry in Microsoft Office / Disable data collection for Telemetry Agent
 
         [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Common]
         "sendcustomerdata"=dword:00000000
@@ -2242,9 +2410,6 @@
         "MouseHoverTime"="1"
 
         [HKEY_CURRENT_USER\Control Panel\Desktop]
-        "MenuShowDelay"="1"
-
-        [HKEY_CURRENT_USER\Control Panel\Desktop]
         "ActiveWndTrackTimeout"=dword:0000000a
 
         [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
@@ -2258,16 +2423,15 @@
         "NoInternetOpenWith"=dword:00000001
 
         [HKEY_CURRENT_USER\Control Panel\Desktop]
-        "AutoEndTasks"="1"
         "HungAppTimeout"="2000"
-        "MenuShowDelay"="0"
+        "MenuShowDelay"="1"
         "WaitToKillAppTimeout"="2500"
         "LowLevelHooksTimeout"="2000"
 
-        [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Control]
+        [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control]
         "WaitToKillServiceTimeout"="2000"
 
-        [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control]
+        [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Control]
         "WaitToKillServiceTimeout"="2000"
 
         [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control]
@@ -2278,7 +2442,6 @@
 ;       * Disable Dump File creation on BSOD
 
         [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
-        "AutoReboot"=dword:00000001
         "CrashDumpEnabled"=dword:00000000
         "Overwrite"=dword:00000001
         "LogEvent"=dword:00000001
@@ -2393,14 +2556,6 @@
 
 
 
-;       * Fix Slow-Loading Windows Icons by Increasing the Icon Cache to 4MB
-;       https://www.tenforums.com/tutorials/125988-change-icon-cache-size-windows.html
-
-        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
-        "Max Cached Icons"="4096"
-
-
-
 ;       * Disable Malicious Software Removal Tool
 
 ;       [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
@@ -2412,13 +2567,6 @@
 
         [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
         "DontReportInfectionInformation"=dword:00000001
-
-
-
-;       * Disable Windows Error Reporting current user
-
-        [HKEY_CURRENT_USER\Software\Microsoft\Windows\Windows Error Reporting]
-        "Disabled"=dword:00000001
 
 
 
