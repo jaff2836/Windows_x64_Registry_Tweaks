@@ -5,7 +5,7 @@ You can manually add/remove comment to use or not use the tweaks.
 
 This is currently wip, but you can currently add the registry.
 
-All registry codes are in TenForums, MajorGeeks, AskVG.com and Ray Woodcock.
+All registry codes are in TenForums/ElevenForums, MajorGeeks, AskVG.com and Ray Woodcock.
 
 
 # TODO
